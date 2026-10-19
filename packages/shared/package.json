@@ -1,0 +1,9 @@
+{
+  "name": "@gdl/shared",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.58.0"
+  }
+}

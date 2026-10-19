@@ -1,0 +1,1 @@
+export * from '@gdl/shared/lib/contact';

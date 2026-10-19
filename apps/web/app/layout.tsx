@@ -1,0 +1,41 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
+import { Toaster } from '@gdl/ui/components/ui/sonner';
+
+const serif = Playfair_Display({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const sans = Plus_Jakarta_Sans({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Komorebi | Gốm Sứ Nhật Bản Thủ Công & Nghệ Thuật Trà Đạo',
+  description:
+    'Bộ sưu tập chén bát, ly tách trà, bình hoa nghệ nhân Nhật Bản chế tác mới 100% (New & Full Box) từ các lò gốm danh tiếng Mino, Arita, Kutani.',
+  openGraph: {
+    title: 'Komorebi | Gốm Sứ Nhật Bản Mới Chính Hãng',
+    description: '100% Gốm nghệ nhân Nhật Bản mới nguyên hộp, chế tác thủ công tinh xảo.',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="vi" className={`${serif.variable} ${sans.variable}`}>
+      <body className="min-h-screen bg-[#FAF7F2] font-sans text-[#2B2927] antialiased selection:bg-[#D4A373]/30 selection:text-[#582F0E]">
+        {children}
+        <Toaster position="top-right" />
+      </body>
+    </html>
+  );
+}

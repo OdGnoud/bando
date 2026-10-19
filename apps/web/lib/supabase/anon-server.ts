@@ -1,0 +1,1 @@
+export * from '@gdl/shared/lib/supabase/anon-server';

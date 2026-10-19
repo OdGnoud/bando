@@ -1,0 +1,21 @@
+{
+  "name": "goc-do-luot",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @gdl/web",
+    "dev:admin": "npm run dev -w @gdl/admin",
+    "dev": "npm run dev -w @gdl/web",
+    "build:web": "npm run build -w @gdl/web",
+    "build:admin": "npm run build -w @gdl/admin",
+    "build": "npm run build -w @gdl/web && npm run build -w @gdl/admin",
+    "typecheck:web": "npm run typecheck -w @gdl/web",
+    "typecheck:admin": "npm run typecheck -w @gdl/admin",
+    "start:web": "npm run start -w @gdl/web",
+    "start:admin": "npm run start -w @gdl/admin"
+  }
+}

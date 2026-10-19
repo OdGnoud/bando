@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 30 5% 15%;
+    --card: 38 27% 95%;
+    --card-foreground: 30 5% 15%;
+    --popover: 40 33% 97%;
+    --popover-foreground: 30 5% 15%;
+    --primary: 24 39% 44%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 38 22% 90%;
+    --secondary-foreground: 24 39% 30%;
+    --muted: 36 20% 91%;
+    --muted-foreground: 30 7% 45%;
+    --accent: 38 25% 92%;
+    --accent-foreground: 24 39% 35%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 18% 88%;
+    --input: 35 18% 88%;
+    --ring: 24 39% 44%;
+    --radius: 0.75rem;
+  }
+}
+
+body {
+  background-color: #FAF7F2;
+  color: #262422;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Texture giấy washi nhẹ nhàng */
+.washi-pattern {
+  background-image: radial-gradient(rgba(112, 106, 97, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Taste-Skill Dynamic Motion & Ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float-subtle 6s ease-in-out infinite;
+}
+
+/* Smooth reveal utility */
+html {
+  scroll-behavior: smooth;
+}
