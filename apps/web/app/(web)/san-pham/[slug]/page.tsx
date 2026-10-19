@@ -8,7 +8,23 @@ import { CONTACT_LINKS, buildZaloLink } from '@/lib/contact';
 import { ProductCard } from '@/components/web/product-card';
 import { ProductGallery } from '@/components/web/product-gallery';
 
-export const dynamic = 'force-dynamic';
+export async function generateStaticParams() {
+  try {
+    const products = await getProducts();
+    if (products && products.length > 0) {
+      return products.map((p) => ({ slug: p.slug }));
+    }
+  } catch {
+    // fallback
+  }
+  return [
+    { slug: 'tach-tra-men-hoa-bien-kem-dia-lot-go' },
+    { slug: 'dia-gom-shino-men-tro-ran-truyen-thong' },
+    { slug: 'binh-hoa-dang-chum-men-tro-moc-kiyomizu' },
+    { slug: 'bo-4-chen-com-gom-mino-hoa-tiet-song-nhat' },
+    { slug: 'bo-am-tra-kyusu-dat-nung-tokoname' },
+  ];
+}
 
 interface Props {
   params: { slug: string };

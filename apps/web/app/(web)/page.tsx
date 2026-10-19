@@ -7,8 +7,6 @@ import { KilnInteractiveExplorer } from '@/components/web/kiln-interactive-explo
 import { ScrollReveal } from '@/components/web/scroll-reveal';
 import { CONTACT_LINKS } from '@/lib/contact';
 
-export const dynamic = 'force-dynamic';
-
 const DEMO_NEW_CERAMICS = [
   {
     id: 'demo-1',

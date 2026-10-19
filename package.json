@@ -17,5 +17,8 @@
     "typecheck:admin": "npm run typecheck -w @gdl/admin",
     "start:web": "npm run start -w @gdl/web",
     "start:admin": "npm run start -w @gdl/admin"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.2"
   }
 }
