@@ -7,6 +7,7 @@ import { formatPrice } from '@/lib/types';
 import { CONTACT_LINKS, buildZaloLink } from '@/lib/contact';
 import { ProductCard } from '@/components/web/product-card';
 import { ProductGallery } from '@/components/web/product-gallery';
+import { DEMO_CERAMICS } from '@/lib/demo-products';
 
 export async function generateStaticParams() {
   try {
@@ -17,13 +18,7 @@ export async function generateStaticParams() {
   } catch {
     // fallback
   }
-  return [
-    { slug: 'tach-tra-men-hoa-bien-kem-dia-lot-go' },
-    { slug: 'dia-gom-shino-men-tro-ran-truyen-thong' },
-    { slug: 'binh-hoa-dang-chum-men-tro-moc-kiyomizu' },
-    { slug: 'bo-4-chen-com-gom-mino-hoa-tiet-song-nhat' },
-    { slug: 'bo-am-tra-kyusu-dat-nung-tokoname' },
-  ];
+  return DEMO_CERAMICS.map((p) => ({ slug: p.slug }));
 }
 
 interface Props {
@@ -31,7 +26,8 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
+  const dbProduct = await getProductBySlug(params.slug);
+  const product = dbProduct || DEMO_CERAMICS.find((p) => p.slug === params.slug);
   if (!product) return { title: 'Không tìm thấy — Komorebi Ceramic' };
   const image = product.product_images?.[0]?.url;
   return {
@@ -47,18 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-  const product = await getProductBySlug(params.slug);
+  const dbProduct = await getProductBySlug(params.slug);
+  const product = dbProduct || DEMO_CERAMICS.find((p) => p.slug === params.slug);
   if (!product) notFound();
 
-  const related = (await getProducts({ limit: 4 })).filter(
-    (p) => p.id !== product.id && p.category_id === product.category_id
-  );
-  const relatedFill = related.length < 4
-    ? (await getProducts({ limit: 8 })).filter(
-        (p) => p.id !== product.id && !related.some((r) => r.id === p.id)
-      ).slice(0, 4 - related.length)
-    : [];
-  const finalRelated = [...related, ...relatedFill].slice(0, 4);
+  const dbRelated = await getProducts({ limit: 6 });
+  const allProds = dbRelated.length > 0 ? dbRelated : DEMO_CERAMICS;
+  const finalRelated = allProds.filter((p) => p.id !== product.id).slice(0, 4);
 
   const images = product.product_images?.sort((a, b) => a.sort_order - b.sort_order) || [];
   const zaloLink = buildZaloLink(product.name, product.slug);
