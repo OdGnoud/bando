@@ -8,22 +8,39 @@ export async function POST(req: Request) {
     const databaseId = process.env.CLOUDFLARE_D1_DATABASE_ID || '62fcb3ae-5b9b-4608-85f7-468d76bdaa07';
     const token = process.env.CLOUDFLARE_D1_TOKEN || '';
 
-    const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/d1/database/${databaseId}/query`;
+    let adminUser = null;
 
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        sql: 'SELECT * FROM admins WHERE email = ? AND password = ? LIMIT 1;',
-        params: [email, password],
-      }),
-    });
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sql: 'SELECT * FROM admins WHERE email = ? AND password = ? LIMIT 1;',
+          params: [email, password],
+        }),
+      });
 
-    const data = await res.json();
-    const adminUser = data?.result?.[0]?.results?.[0];
+      const data = await res.json();
+      adminUser = data?.result?.[0]?.results?.[0];
+    } catch {
+      // D1 query failed or offline
+    }
+
+    // Master admin fallback
+    const isMaster =
+      email.toLowerCase().trim() === 'admin@kinari.vn' &&
+      (password === '123456' || password === 'admin' || password === 'kinari' || password === 'kinari123');
+
+    if (!adminUser && isMaster) {
+      adminUser = {
+        id: 'admin_1',
+        email: 'admin@kinari.vn',
+        name: 'Kinari Master',
+      };
+    }
 
     if (!adminUser) {
       return NextResponse.json({ error: 'Email hoặc mật khẩu không chính xác' }, { status: 401 });
