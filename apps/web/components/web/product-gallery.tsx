@@ -66,7 +66,7 @@ export function ProductGallery({
           {active + 1}/{sorted.length}
         </span>
         <span className="absolute left-3.5 bottom-3.5 inline-flex items-center gap-1 rounded bg-[#FAF7F2]/90 px-2.5 py-1 text-[10px] font-serif font-bold text-[#4A3728] backdrop-blur-xs">
-          手造り · 100% Mới
+          手造り · Gốm Nhật
         </span>
       </button>
 

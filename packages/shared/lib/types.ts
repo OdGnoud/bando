@@ -1,7 +1,7 @@
 export type ProductStatus = 'available' | 'sold';
 
 export const CONDITION_OPTIONS = [
-  'Mới 100% nguyên hộp',
+  'Hàng mới xuất lò',
   'Đồ cũ tuyển chọn (90-95%)',
   'Like New (98-99%)',
   'Cổ / Sưu tầm',

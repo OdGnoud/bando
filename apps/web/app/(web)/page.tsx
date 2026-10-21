@@ -213,7 +213,7 @@ export default async function HomePage() {
               <div className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden rounded-2xl border-4 border-white shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
                 <Image
                   src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1000&q=85"
-                  alt="Gốm sứ Nhật Bản mới nguyên hộp"
+                  alt="Gốm sứ & đồ trang trí thủ công Nhật Bản"
                   fill
                   priority
                   className="object-cover"
@@ -463,8 +463,8 @@ export default async function HomePage() {
             {[
               {
                 kanji: '選',
-                title: 'Tuyển Chọn Tỉ Mỉ',
-                desc: 'Từ tác phẩm mới xuất lò đến đồ cũ vintage đượm màu thời gian, từng món đều được tuyển lựa khắt khe.',
+                title: 'Tuyển Chọn Kỹ Càng',
+                desc: 'Tỉ mỉ lựa chọn từ đồ gốm mới thủ công đến đồ cũ vintage đượm màu thời gian, đảm bảo lành lặn và thẩm mỹ.',
               },
               {
                 kanji: '無',
@@ -477,9 +477,9 @@ export default async function HomePage() {
                 desc: 'Mỗi sản phẩm đều có triện khắc đáy 手造り xác thực nguồn gốc lò nung.',
               },
               {
-                kanji: '箱',
-                title: 'Đóng Hộp Trang Trọng',
-                desc: 'Đi kèm hộp mộc bọc lót chống sốc đa lớp, vô cùng trang nhã để làm quà tặng.',
+                kanji: '包',
+                title: 'Đóng Gói Chống Sốc An Toàn',
+                desc: 'Bọc lót chống sốc đa lớp chuyên dụng, gia cố cẩn thận đảm bảo an toàn tuyệt đối khi giao hàng.',
               },
             ].map((item, idx) => (
               <ScrollReveal key={item.title} direction="up" delayMs={idx * 150}>

@@ -66,7 +66,7 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.category?.name || 'Gốm Sứ Nhật Bản'}
           </span>
           {(() => {
-            const cond = product.condition_label || 'Mới 100%';
+            const cond = product.condition_label || 'Hàng mới';
             const isUsed = cond.toLowerCase().includes('cũ') || cond.toLowerCase().includes('secondhand') || cond.toLowerCase().includes('sưu tầm') || cond.toLowerCase().includes('cổ') || cond.includes('95%') || cond.includes('98%') || cond.includes('90%');
             return isUsed ? (
               <span className="inline-flex shrink-0 items-center gap-1 rounded bg-[#B07D62]/15 px-1.5 py-0.5 text-[9px] font-bold text-[#9C6644] tracking-wider uppercase">
@@ -74,7 +74,7 @@ export function ProductCard({ product }: ProductCardProps) {
               </span>
             ) : (
               <span className="inline-flex shrink-0 items-center gap-1 text-[10px] font-bold text-[#588157] tracking-wider uppercase">
-                MỚI 100%
+                HÀNG MỚI
               </span>
             );
           })()}
@@ -101,7 +101,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <div className="text-[10px] text-[#A68A75] tracking-wide">
               {product.condition_label && (product.condition_label.toLowerCase().includes('cũ') || product.condition_label.toLowerCase().includes('secondhand'))
                 ? 'Đồ cũ tuyển chọn Nhật'
-                : 'Nguyên hộp lò gốm'}
+                : 'Gốm thủ công Nhật'}
             </div>
           </div>
 

@@ -156,7 +156,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
             : selectedCondition === 'used'
             ? 'MỤC BÁN ĐỒ CŨ TUYỂN CHỌN'
             : selectedCondition === 'new'
-            ? 'BỘ SƯU TẬP GỐM MỚI NGUYÊN HỘP'
+            ? 'BỘ SƯU TẬP GỐM MỚI CHÍNH HÃNG'
             : 'KINARI きなり — BỘ SƯU TẬP TOÀN DIỆN'}
         </span>
         <h1 className="mt-1 font-serif text-3xl sm:text-4xl font-normal text-[#262422]">
@@ -165,7 +165,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
             : selectedCondition === 'used'
             ? 'Đồ Cũ Tuyển Chọn & Vintage Nhật'
             : selectedCondition === 'new'
-            ? 'Gốm Sứ & Đồ Trang Trí Mới 100%'
+            ? 'Gốm Sứ & Đồ Trang Trí Mới'
             : 'Tất Cả Tác Phẩm & Đồ Trang Trí'}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-[#706A61] leading-relaxed">
@@ -198,7 +198,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
                   : 'text-[#706A61] hover:text-[#262422]'
               }`}
             >
-              Hàng Mới 100% ({counts.new})
+              Hàng Mới ({counts.new})
             </button>
             <button
               type="button"

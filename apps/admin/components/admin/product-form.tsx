@@ -79,7 +79,7 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
   const [name, setName] = useState(initial?.name || '');
   const [slug, setSlug] = useState(initial?.slug || '');
   const [categoryId, setCategoryId] = useState<string>(initial?.category_id || 'none');
-  const [conditionLabel, setConditionLabel] = useState<string>(initial?.condition_label || 'Mới 100% nguyên hộp');
+  const [conditionLabel, setConditionLabel] = useState<string>(initial?.condition_label || 'Hàng mới xuất lò');
   const [price, setPrice] = useState<string>(initial ? String(initial.price) : '');
   const [status, setStatus] = useState<ProductStatus>(initial?.status || 'available');
   const [shortDesc, setShortDesc] = useState(initial?.short_description || '');
@@ -265,11 +265,11 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
             id="condition"
             value={conditionLabel}
             onChange={(e) => setConditionLabel(e.target.value)}
-            placeholder="Mới 100% nguyên hộp"
+            placeholder="Hàng mới xuất lò"
             list="condition-list"
           />
           <datalist id="condition-list">
-            <option value="Mới 100% nguyên hộp" />
+            <option value="Hàng mới xuất lò" />
             <option value="Đồ cũ tuyển chọn (90-95%)" />
             <option value="Like New (98-99%)" />
             <option value="Cổ / Sưu tầm" />
