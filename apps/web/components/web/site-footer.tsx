@@ -11,14 +11,14 @@ export function SiteFooter() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="font-serif text-2xl font-bold tracking-wider text-[#2B2927]">
-                KOMOREBI
+                KINARI
               </span>
               <span className="rounded bg-[#E3DAC9] px-2 py-0.5 text-[11px] font-medium text-[#5E503F]">
-                木漏れ日
+                きなり
               </span>
             </div>
             <p className="text-sm leading-relaxed text-[#706A61]">
-              Tôn vinh vẻ đẹp bất toàn và mộc mạc theo tinh thần Wabi-sabi. Mỗi chiếc chén, đĩa, bình hoa đều mang dấu ấn thời gian và bàn tay tài hoa của nghệ nhân gốm Nhật.
+              Kinari (生成り) mang ý nghĩa mộc mạc nguyên bản, tôn vinh vẻ đẹp tự nhiên và bất toàn theo tinh thần Wabi-sabi. Tuyển chọn gốm nghệ nhân, đồ trang trí phong thủy và các món đồ cũ vintage độc bản từ Nhật Bản.
             </p>
             <p className="text-xs text-[#9C6644] italic font-serif">
               “Vẻ đẹp giản dị, tĩnh lặng và trường tồn cùng thời gian.”
@@ -28,9 +28,19 @@ export function SiteFooter() {
           {/* Collection Links */}
           <div>
             <h4 className="mb-4 font-serif text-base font-semibold tracking-wide text-[#2B2927]">
-              Danh Mục Gốm
+              Danh Mục Sản Phẩm
             </h4>
             <ul className="space-y-2.5 text-sm text-[#706A61]">
+              <li>
+                <Link href="/san-pham?cat=do-trang-tri" className="hover:text-[#9C6644] transition-colors font-medium text-[#8C5E45]">
+                  ✦ Đồ Trang Trí & Phong Thủy
+                </Link>
+              </li>
+              <li>
+                <Link href="/san-pham?cat=do-cu" className="hover:text-[#9C6644] transition-colors font-medium text-[#8C5E45]">
+                  ✦ Đồ Cũ Tuyển Chọn (Secondhand)
+                </Link>
+              </li>
               <li>
                 <Link href="/san-pham?cat=coc-tach" className="hover:text-[#9C6644] transition-colors">
                   Tách & Chén Trà (Yunomi / Chawan)
@@ -43,17 +53,12 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/san-pham?cat=dia-khay" className="hover:text-[#9C6644] transition-colors">
-                  Đĩa Bánh & Khay Sashimi
+                  Đĩa Bánh & Khay Gốm
                 </Link>
               </li>
               <li>
                 <Link href="/san-pham?cat=binh-hoa" className="hover:text-[#9C6644] transition-colors">
-                  Bình Hoa Ikebana & Decor
-                </Link>
-              </li>
-              <li>
-                <Link href="/san-pham?cat=set-doi" className="hover:text-[#9C6644] transition-colors">
-                  Set Cặp Đôi (Meoto Chawan)
+                  Bình Hoa Ikebana & Lọ Cổ
                 </Link>
               </li>
             </ul>
@@ -104,7 +109,7 @@ export function SiteFooter() {
 
         {/* Bottom copyright */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#E8E1D7] pt-8 text-xs text-[#857B72] sm:flex-row">
-          <p>© 2026 Komorebi Ceramic. Nghệ thuật gốm sứ mộc mạc Nhật Bản.</p>
+          <p>© 2026 Kinari. Nghệ thuật gốm sứ & Đồ trang trí Nhật Bản.</p>
           <p className="flex items-center gap-1 font-serif">
             Được chế tác với tâm huyết và tình yêu dành cho văn hoá trà & gốm
           </p>

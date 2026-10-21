@@ -1,6 +1,11 @@
 export type ProductStatus = 'available' | 'sold';
 
-export const CONDITION_OPTIONS = ['Mới 100%', 'Như mới (99%)', 'Đã qua sử dụng (90-95%)', 'Cổ / Sưu tầm'] as const;
+export const CONDITION_OPTIONS = [
+  'Mới 100% nguyên hộp',
+  'Đồ cũ tuyển chọn (90-95%)',
+  'Like New (98-99%)',
+  'Cổ / Sưu tầm',
+] as const;
 export type ConditionOption = (typeof CONDITION_OPTIONS)[number];
 
 export interface Category {
@@ -35,12 +40,12 @@ export interface Product {
   location: string | null;
   is_featured: boolean;
   is_new_arrival: boolean;
-  facebook_post_id: string | null;
-  facebook_posted_at: string | null;
-  sort_order: number;
-  created_at: string;
-  updated_at: string;
-  user_id: string;
+  facebook_post_id?: string | null;
+  facebook_posted_at?: string | null;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+  user_id?: string;
   category?: Category | null;
   product_images?: ProductImage[];
 }

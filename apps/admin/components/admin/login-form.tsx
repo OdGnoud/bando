@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { LogIn, Loader2, AlertCircle } from 'lucide-react';
 
 export function LoginForm() {
-  const [email, setEmail] = useState('admin@komorebi.vn');
+  const [email, setEmail] = useState('admin@kinari.vn');
   const [password, setPassword] = useState('123456');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           className="w-full rounded-lg border border-[#DDD3C4] bg-[#FAF7F2] px-3.5 py-2.5 text-sm text-[#262422] focus:border-[#9C6644] focus:outline-none"
-          placeholder="admin@komorebi.vn"
+          placeholder="admin@kinari.vn"
         />
       </div>
 

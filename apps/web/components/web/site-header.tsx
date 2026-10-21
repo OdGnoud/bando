@@ -8,11 +8,11 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Bộ Sưu Tập' },
-  { href: '/san-pham?cat=coc-tach', label: 'Tách & Ly' },
-  { href: '/san-pham?cat=bat-to', label: 'Bát & Tô' },
-  { href: '/san-pham?cat=dia-khay', label: 'Đĩa & Khay' },
-  { href: '/san-pham?cat=binh-hoa', label: 'Bình Hoa' },
-  { href: '/ve-chung-toi', label: 'Về Komorebi' },
+  { href: '/san-pham', label: 'Tất Cả Sản Phẩm' },
+  { href: '/san-pham?cat=do-trang-tri', label: 'Đồ Trang Trí' },
+  { href: '/san-pham?cat=do-cu', label: 'Đồ Cũ Tuyển Chọn' },
+  { href: '/ve-chung-toi', label: 'Về Kinari' },
+  { href: '/lien-he', label: 'Liên Hệ' },
 ];
 
 export function SiteHeader() {
@@ -36,14 +36,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-[#E8E1D7] bg-[#FAF7F2]/90 backdrop-blur-md transition-all">
       {/* Top Banner Notice */}
       <div className="bg-[#4A3728] px-4 py-1.5 text-center text-xs tracking-wider text-[#FAF7F2]/90">
-        <span className="font-medium">KOMOREBI 木漏れ日</span> — Gốm thủ công mộc mạc, mỗi món đồ là duy nhất (Độc bản).
+        <span className="font-medium">KINARI きなり</span> — Gốm sứ thủ công, đồ trang trí & đồ cũ vintage tuyển chọn Nhật Bản.
       </div>
 
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center gap-3">
           <div className="relative flex h-11 w-11 items-center justify-center rounded-sm bg-[#4A3728] text-[#FAF7F2] font-serif text-lg font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
-            <span className="font-serif">木</span>
+            <span className="font-serif">生</span>
             <div className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border border-white bg-[#BC4749] text-[8px] flex items-center justify-center font-bold text-white shadow-xs">
               印
             </div>
@@ -51,12 +51,12 @@ export function SiteHeader() {
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <span className="font-serif text-2xl font-normal tracking-wide text-[#2B2927]">
-                KOMOREBI
+                KINARI
               </span>
-              <span className="text-[10px] text-[#A68A75] font-serif italic">木漏れ日</span>
+              <span className="text-[10px] text-[#A68A75] font-serif italic">きなり</span>
             </div>
             <span className="text-[9px] tracking-[0.25em] uppercase text-[#8C5E45] font-medium">
-              Gốm Sứ Nghệ Nhân Nhật Bản
+              Gốm Sứ & Đồ Trang Trí Nhật Bản
             </span>
           </div>
         </Link>

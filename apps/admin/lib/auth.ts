@@ -14,8 +14,8 @@ export async function getAdminSession(): Promise<AdminSession | null> {
   return {
     user: {
       id: 'admin_1',
-      email: 'admin@komorebi.vn',
-      name: 'Komorebi Master',
+      email: 'admin@kinari.vn',
+      name: 'Kinari Master',
     },
     deviceId: 'master_device',
   };

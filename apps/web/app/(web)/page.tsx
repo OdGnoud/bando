@@ -106,6 +106,16 @@ export default async function HomePage() {
       desc: 'Bình cắm hoa Ikebana, lọ gốm trang trí',
       fallbackImg: 'https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?auto=format&fit=crop&w=600&q=80',
     },
+    'do-trang-tri': {
+      kanji: '置物',
+      desc: 'Tượng phong thủy, đồ trang trí nghệ thuật',
+      fallbackImg: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80',
+    },
+    'do-cu': {
+      kanji: '古物',
+      desc: 'Đồ cũ tuyển chọn, gốm cổ vintage Nhật',
+      fallbackImg: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80',
+    },
   };
 
   const categoryImageMap = new Map<string, string>();
@@ -121,7 +131,9 @@ export default async function HomePage() {
     { id: '1', name: 'Tách & Chén Trà', slug: 'coc-tach' },
     { id: '2', name: 'Bát & Tô Canh', slug: 'bat-to' },
     { id: '3', name: 'Đĩa & Khay Gốm', slug: 'dia-khay' },
-    { id: '4', name: 'Bình Hoa & Decor', slug: 'binh-hoa' },
+    { id: '4', name: 'Bình Hoa Ikebana', slug: 'binh-hoa' },
+    { id: '5', name: 'Đồ Trang Trí', slug: 'do-trang-tri' },
+    { id: '6', name: 'Đồ Cũ Tuyển Chọn', slug: 'do-cu' },
   ];
 
   const categoriesToShow = dbCategories.length > 0 ? dbCategories : defaultCategoryList;
@@ -139,12 +151,12 @@ export default async function HomePage() {
               </div>
 
               <h1 className="font-serif text-4xl font-normal tracking-tight text-[#262422] sm:text-5xl lg:text-6xl leading-[1.15]">
-                Gốm sứ thủ công mới, <br />
-                <span className="italic font-light text-[#9C6644]">tinh hoa từ lò gốm Nhật.</span>
+                Gốm sứ & Đồ trang trí, <br />
+                <span className="italic font-light text-[#9C6644]">vẻ đẹp mộc mạc từ Nhật Bản.</span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#706A61] sm:text-lg">
-                Komorebi mang đến các tác phẩm chén, bát, tách trà và bình hoa chế tác mới 100% từ các lò gốm nghệ nhân danh tiếng Nhật Bản (Mino, Arita, Kutani). Từng món đồ nguyên hộp, tinh xảo và an toàn tuyệt đối cho bàn ăn gia đình.
+                Kinari mang đến các tác phẩm gốm sứ nghệ nhân tinh xảo, đồ trang trí phong thủy và các món đồ cũ vintage tuyển chọn từ các vùng lò danh tiếng Nhật Bản (Mino, Arita, Kutani, Kyoto).
               </p>
 
               <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center">
@@ -310,7 +322,7 @@ export default async function HomePage() {
                 Tinh hoa từ 4 cái nôi gốm sứ cổ truyền Nhật Bản.
               </h2>
               <p className="text-sm leading-relaxed text-[#706A61] sm:text-base">
-                Không phải sản xuất công nghiệp hàng loạt. Từng sản phẩm tại Komorebi đều là đồ mới nguyên hộp được nghệ nhân tại các vùng lò lừng danh nhào nặn đất sét tự nhiên, tráng men khoáng thạch và nung ở nhiệt độ 1,200°C – 1,350°C.
+                Không phải sản xuất công nghiệp hàng loạt. Từng sản phẩm tại Kinari đều được nghệ nhân tại các vùng lò lừng danh nhào nặn đất sét tự nhiên, tráng men khoáng thạch và nung ở nhiệt độ cao 1,200°C – 1,350°C.
               </p>
               <div className="space-y-4 pt-2">
                 <div className="flex gap-4">
@@ -436,7 +448,7 @@ export default async function HomePage() {
               TRIẾT LÝ BÀN ĂN NHẬT BẢN
             </span>
             <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-normal text-[#262422]">
-              Bốn Giá Trị Cốt Lõi Của Gốm Komorebi
+              Bốn Giá Trị Cốt Lõi Của Kinari
             </h2>
             <div className="mx-auto mt-3 h-[2px] w-12 bg-[#B07D62]" />
           </ScrollReveal>
@@ -486,7 +498,7 @@ export default async function HomePage() {
             Từng tác phẩm gốm mới 100% nguyên hộp, mang hơi thở tinh hoa của bàn tay nghệ nhân Nhật Bản đến từng không gian sống và bàn ăn của bạn.
           </blockquote>
           <p className="mt-4 text-xs tracking-widest uppercase text-[#857B72]">
-            — Komorebi Ceramic | Gốm Mới Chính Hãng —
+            — Kinari Ceramic | Gốm Sứ & Đồ Trang Trí Nhật Bản —
           </p>
         </ScrollReveal>
       </section>

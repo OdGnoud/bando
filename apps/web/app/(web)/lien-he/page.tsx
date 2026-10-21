@@ -3,8 +3,8 @@ import { MessageCircle, Phone, MapPin, Clock, Send, Sparkles } from 'lucide-reac
 import { CONTACT_LINKS } from '@/lib/contact';
 
 export const metadata: Metadata = {
-  title: 'Liên Hệ | Tiệm Gốm Sứ Komorebi',
-  description: 'Liên hệ tư vấn chọn gốm sứ mới, set quà tặng gốm Nhật theo yêu cầu.',
+  title: 'Liên Hệ | Tiệm Gốm Sứ & Đồ Trang Trí Kinari',
+  description: 'Liên hệ tư vấn chọn gốm sứ mới, đồ trang trí phong thủy và đồ cũ vintage Nhật Bản.',
 };
 
 export default function ContactPage() {
@@ -12,14 +12,14 @@ export default function ContactPage() {
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:py-24">
       <span className="inline-flex items-center gap-1.5 rounded-full border border-[#DDBEA9] bg-[#FAF7F2] px-3 py-1 text-xs font-medium tracking-wider text-[#9C6644]">
         <Sparkles className="h-3.5 w-3.5" />
-        Kết Nối Cùng Komorebi
+        Kết Nối Cùng Kinari
       </span>
 
       <h1 className="mt-6 font-serif text-3xl sm:text-4xl font-normal text-[#262422]">
-        Trò chuyện & tư vấn chọn gốm
+        Trò chuyện & tư vấn chọn tác phẩm
       </h1>
       <p className="mt-3 text-base text-[#706A61]">
-        Bạn cần tìm một chiếc tách trà làm quà, một set bát cơm gia đình hay bình hoa ưng ý? Hãy nhắn tin cho Komorebi, chúng tôi luôn sẵn lòng chụp ảnh video chi tiết từng góc món đồ cho bạn.
+        Bạn cần tìm một chiếc tách trà làm quà, một tượng mèo may mắn trang trí hay một món đồ gốm cũ vintage độc bản? Hãy nhắn tin cho Kinari, chúng tôi luôn sẵn lòng chụp ảnh video chi tiết từng góc cho bạn.
       </p>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2">

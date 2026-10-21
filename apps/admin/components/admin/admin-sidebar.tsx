@@ -42,7 +42,7 @@ export function AdminSidebar() {
     <>
       {/* Mobile bar */}
       <div className="flex items-center justify-between border-b border-[#3D3731] bg-[#262422] px-4 py-3 text-[#FAF7F2] lg:hidden">
-        <span className="font-serif font-bold">Komorebi Admin</span>
+        <span className="font-serif font-bold">Kinari Admin</span>
         <button onClick={() => setOpen(!open)} className="text-xs text-[#DDD3C4]">
           Menu
         </button>
@@ -60,10 +60,10 @@ export function AdminSidebar() {
       >
         <div className="flex h-16 items-center gap-3 border-b border-[#3D3731] px-6">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4A3728] font-serif text-sm font-bold text-[#FAF7F2]">
-            木
+            生
           </div>
           <Link href="/admin/tong-quan" className="font-serif text-lg font-bold tracking-wide">
-            KOMOREBI <span className="text-[#D4A373] text-xs font-sans uppercase">Quản trị</span>
+            KINARI <span className="text-[#D4A373] text-xs font-sans uppercase">Quản trị</span>
           </Link>
         </div>
 

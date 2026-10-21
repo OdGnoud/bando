@@ -28,10 +28,10 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dbProduct = await getProductBySlug(params.slug);
   const product = dbProduct || DEMO_CERAMICS.find((p) => p.slug === params.slug);
-  if (!product) return { title: 'Không tìm thấy — Komorebi Ceramic' };
+  if (!product) return { title: 'Không tìm thấy — Kinari' };
   const image = product.product_images?.[0]?.url;
   return {
-    title: `${product.name} — Komorebi Ceramic`,
+    title: `${product.name} — Kinari`,
     description: product.short_description || undefined,
     openGraph: {
       title: `${product.name} — ${formatPrice(product.price)}`,
@@ -54,6 +54,17 @@ export default async function ProductDetailPage({ params }: Props) {
   const images = product.product_images?.sort((a, b) => a.sort_order - b.sort_order) || [];
   const zaloLink = buildZaloLink(product.name, product.slug);
 
+  const cond = product.condition_label || 'Mới 100%';
+  const isUsed =
+    cond.toLowerCase().includes('cũ') ||
+    cond.toLowerCase().includes('secondhand') ||
+    cond.toLowerCase().includes('sưu tầm') ||
+    cond.toLowerCase().includes('cổ') ||
+    cond.includes('95%') ||
+    cond.includes('98%') ||
+    cond.includes('90%') ||
+    product.category?.slug === 'do-cu';
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <Link
@@ -73,7 +84,7 @@ export default async function ProductDetailPage({ params }: Props) {
         {/* Info */}
         <div className="space-y-6 lg:col-span-5">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {product.status === 'available' ? (
                 <span className="inline-flex items-center gap-1 rounded-full bg-[#606C38]/10 border border-[#606C38]/30 px-2.5 py-0.5 text-xs font-semibold text-[#606C38]">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#606C38]" />
@@ -84,6 +95,17 @@ export default async function ProductDetailPage({ params }: Props) {
                   ĐÃ HẾT
                 </span>
               )}
+
+              {isUsed ? (
+                <span className="rounded-full bg-[#B07D62]/15 border border-[#B07D62]/30 px-2.5 py-0.5 text-xs font-bold text-[#8C5E45]">
+                  {cond}
+                </span>
+              ) : (
+                <span className="rounded-full bg-[#588157]/10 border border-[#588157]/30 px-2.5 py-0.5 text-xs font-bold text-[#588157]">
+                  {cond}
+                </span>
+              )}
+
               <span className="rounded bg-[#2B2927] px-2 py-0.5 text-[10px] font-medium uppercase text-[#FAF7F2]">
                 手造り (Thủ Công)
               </span>
@@ -111,6 +133,9 @@ export default async function ProductDetailPage({ params }: Props) {
               <div>
                 Xuất xứ: <span className="font-medium text-[#262422]">Lò gốm nghệ nhân Nhật Bản</span>
               </div>
+              <div>
+                Tình trạng: <span className="font-medium text-[#262422]">{cond}</span>
+              </div>
             </div>
           </div>
 
@@ -122,7 +147,7 @@ export default async function ProductDetailPage({ params }: Props) {
           <div className="space-y-3 pt-2">
             <a
               href={`${CONTACT_LINKS.messenger}?text=${encodeURIComponent(
-                `Xin chào Komorebi, mình muốn đặt mua sản phẩm gốm mới: ${product.name}`
+                `Xin chào Kinari, mình muốn đặt mua sản phẩm: ${product.name}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -140,7 +165,7 @@ export default async function ProductDetailPage({ params }: Props) {
               Nhắn tin qua Zalo
             </a>
             <p className="text-center text-[11px] text-[#A4998E]">
-              Komorebi hỗ trợ quay video góc cạnh chi tiết trước khi đóng gói gửi bạn.
+              Kinari hỗ trợ quay video góc cạnh chi tiết trước khi đóng gói gửi bạn.
             </p>
           </div>
 

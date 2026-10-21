@@ -6,6 +6,6 @@ export const CONTACT_LINKS = {
 };
 
 export function buildZaloLink(productName: string, productSlug: string): string {
-  const text = `Chào Góc Đồ Lướt, mình quan tâm đến "${productName}" (goc-do-luot.vercel.app/san-pham/${productSlug}).`;
+  const text = `Chào Kinari, mình quan tâm đến "${productName}" (kinari.vn/san-pham/${productSlug}).`;
   return `${CONTACT_LINKS.zalo}?ref=${encodeURIComponent(text)}`;
 }

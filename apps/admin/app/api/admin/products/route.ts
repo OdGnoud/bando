@@ -72,6 +72,73 @@ export async function POST(request: NextRequest) {
   }
 }
 
+export async function PATCH(request: NextRequest) {
+  const admin = await getAdminSession();
+  if (!admin) {
+    return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json();
+    const id = body.id;
+    if (!id) {
+      return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
+    }
+
+    const slug = body.slug || slugify(body.name) + '-' + id.slice(0, 6);
+
+    await d1Query(
+      `UPDATE products SET
+        name = ?,
+        slug = ?,
+        category_id = ?,
+        price = ?,
+        condition_label = ?,
+        status = ?,
+        short_description = ?,
+        full_description = ?,
+        accessories = ?,
+        location = ?,
+        is_featured = ?,
+        is_new_arrival = ?
+      WHERE id = ?;`,
+      [
+        body.name,
+        slug,
+        body.category_id || null,
+        body.price || 0,
+        body.condition_label || 'Mới 100% nguyên hộp',
+        body.status || 'available',
+        body.short_description || null,
+        body.full_description || null,
+        body.accessories || null,
+        body.location || 'Kho Hà Nội',
+        body.is_featured ? 1 : 0,
+        body.is_new_arrival ? 1 : 0,
+        id,
+      ]
+    );
+
+    // Cập nhật lại ảnh nếu có gửi ảnh mới
+    if (body.images && Array.isArray(body.images)) {
+      await d1Query('DELETE FROM product_images WHERE product_id = ?;', [id]);
+      for (let i = 0; i < body.images.length; i++) {
+        const img = body.images[i];
+        if (img.url) {
+          await d1Query(
+            'INSERT INTO product_images (id, product_id, url, sort_order) VALUES (?, ?, ?, ?);',
+            [randomUUID(), id, img.url, i]
+          );
+        }
+      }
+    }
+
+    return NextResponse.json({ success: true, id, name: body.name, slug });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}
+
 export async function DELETE(request: NextRequest) {
   const admin = await getAdminSession();
   if (!admin) {

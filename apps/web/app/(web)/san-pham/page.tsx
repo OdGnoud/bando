@@ -5,9 +5,9 @@ import { ProductsClientList } from '@/components/web/products-client-list';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Tất Cả Sản Phẩm Gốm Mới | Komorebi Ceramic',
+  title: 'Tất Cả Sản Phẩm Gốm & Đồ Trang Trí | Kinari',
   description:
-    'Danh mục trọn bộ chén, bát, ly tách trà, bình hoa thủ công mới 100% từ Nhật Bản.',
+    'Danh mục gốm sứ nghệ nhân mới 100%, đồ trang trí tinh tế và đồ cũ vintage tuyển chọn từ Nhật Bản.',
 };
 import { DEMO_CERAMICS } from '@/lib/demo-products';
 

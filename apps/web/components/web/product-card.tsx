@@ -32,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center text-[#A4998E]">
             <Feather className="h-6 w-6 stroke-[1.5] mb-2 text-[#C4B7A6]" />
-            <span className="text-xs font-serif italic">Gốm thủ công Komorebi</span>
+            <span className="text-xs font-serif italic">Gốm thủ công Kinari</span>
           </div>
         )}
 
@@ -60,14 +60,24 @@ export function ProductCard({ product }: ProductCardProps) {
 
       {/* Product Info */}
       <div className="flex flex-1 flex-col p-5">
-        {/* Category & New Tag */}
-        <div className="mb-2 flex items-center justify-between text-[11px]">
-          <span className="tracking-widest uppercase font-semibold text-[#8C5E45]">
+        {/* Category & Condition Tag */}
+        <div className="mb-2 flex items-center justify-between text-[11px] gap-2">
+          <span className="tracking-widest uppercase font-semibold text-[#8C5E45] truncate">
             {product.category?.name || 'Gốm Sứ Nhật Bản'}
           </span>
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#588157] tracking-wider uppercase">
-            MỚI 100%
-          </span>
+          {(() => {
+            const cond = product.condition_label || 'Mới 100%';
+            const isUsed = cond.toLowerCase().includes('cũ') || cond.toLowerCase().includes('secondhand') || cond.toLowerCase().includes('sưu tầm') || cond.toLowerCase().includes('cổ') || cond.includes('95%') || cond.includes('98%') || cond.includes('90%');
+            return isUsed ? (
+              <span className="inline-flex shrink-0 items-center gap-1 rounded bg-[#B07D62]/15 px-1.5 py-0.5 text-[9px] font-bold text-[#9C6644] tracking-wider uppercase">
+                {cond.includes('(') ? cond.split('(')[0].trim() : cond}
+              </span>
+            ) : (
+              <span className="inline-flex shrink-0 items-center gap-1 text-[10px] font-bold text-[#588157] tracking-wider uppercase">
+                MỚI 100%
+              </span>
+            );
+          })()}
         </div>
 
         {/* Title */}
@@ -89,13 +99,15 @@ export function ProductCard({ product }: ProductCardProps) {
               {formatPrice(product.price)}
             </div>
             <div className="text-[10px] text-[#A68A75] tracking-wide">
-              Nguyên hộp lò gốm
+              {product.condition_label && (product.condition_label.toLowerCase().includes('cũ') || product.condition_label.toLowerCase().includes('secondhand'))
+                ? 'Đồ cũ tuyển chọn Nhật'
+                : 'Nguyên hộp lò gốm'}
             </div>
           </div>
 
           <a
             href={`${CONTACT_LINKS.messenger}?text=${encodeURIComponent(
-              `Xin chào Komorebi, mình muốn tư vấn đặt mua mẫu gốm mới: ${product.name}`
+              `Xin chào Kinari, mình muốn tư vấn đặt mua tác phẩm: ${product.name}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"

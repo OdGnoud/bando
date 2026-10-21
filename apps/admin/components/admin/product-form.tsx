@@ -79,6 +79,7 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
   const [name, setName] = useState(initial?.name || '');
   const [slug, setSlug] = useState(initial?.slug || '');
   const [categoryId, setCategoryId] = useState<string>(initial?.category_id || 'none');
+  const [conditionLabel, setConditionLabel] = useState<string>(initial?.condition_label || 'Mới 100% nguyên hộp');
   const [price, setPrice] = useState<string>(initial ? String(initial.price) : '');
   const [status, setStatus] = useState<ProductStatus>(initial?.status || 'available');
   const [shortDesc, setShortDesc] = useState(initial?.short_description || '');
@@ -133,7 +134,7 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
       slug: slug || slugify(name),
       category_id: categoryId === 'none' ? null : categoryId,
       price: Number(price) || 0,
-      condition_label: 'Mới 100%',
+      condition_label: conditionLabel,
       status,
       short_description: shortDesc,
       full_description: fullDesc,
@@ -241,7 +242,7 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-2">
           <Label htmlFor="category">Danh mục</Label>
           <Select value={categoryId} onValueChange={setCategoryId}>
@@ -257,6 +258,22 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="condition">Tình trạng (Mới / Đồ Cũ)</Label>
+          <Input
+            id="condition"
+            value={conditionLabel}
+            onChange={(e) => setConditionLabel(e.target.value)}
+            placeholder="Mới 100% nguyên hộp"
+            list="condition-list"
+          />
+          <datalist id="condition-list">
+            <option value="Mới 100% nguyên hộp" />
+            <option value="Đồ cũ tuyển chọn (90-95%)" />
+            <option value="Like New (98-99%)" />
+            <option value="Cổ / Sưu tầm" />
+          </datalist>
         </div>
         <div className="space-y-2">
           <Label htmlFor="price">Giá (Yên - JPY) *</Label>

@@ -16,12 +16,12 @@ const sans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Komorebi | Gốm Sứ Nhật Bản Thủ Công & Nghệ Thuật Trà Đạo',
+  title: 'Kinari | Gốm Sứ Thủ Công & Đồ Trang Trí Nhật Bản',
   description:
-    'Bộ sưu tập chén bát, ly tách trà, bình hoa nghệ nhân Nhật Bản chế tác mới 100% (New & Full Box) từ các lò gốm danh tiếng Mino, Arita, Kutani.',
+    'Bộ sưu tập chén bát, ly tách trà, bình hoa nghệ nhân Nhật Bản, đồ trang trí mộc mạc và đồ cũ vintage tuyển chọn (Kinari きなり).',
   openGraph: {
-    title: 'Komorebi | Gốm Sứ Nhật Bản Mới Chính Hãng',
-    description: '100% Gốm nghệ nhân Nhật Bản mới nguyên hộp, chế tác thủ công tinh xảo.',
+    title: 'Kinari | Gốm Sứ & Đồ Trang Trí Nhật Bản',
+    description: 'Nghệ thuật gốm sứ mộc mạc, đồ trang trí tinh tế và đồ cũ vintage tuyển chọn từ các lò gốm Nhật Bản.',
   },
 };
 

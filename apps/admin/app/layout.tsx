@@ -6,8 +6,8 @@ import { Toaster } from '@gdl/ui/components/ui/sonner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Góc Đồ Lướt — Quản trị',
-  description: 'Trang quản trị Góc Đồ Lướt.',
+  title: 'Kinari — Quản trị',
+  description: 'Trang quản trị Kinari Ceramic & Decor.',
 };
 
 export default function RootLayout({

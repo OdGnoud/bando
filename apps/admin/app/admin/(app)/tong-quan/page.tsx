@@ -82,7 +82,7 @@ export default function DashboardPage() {
           Bảng điều khiển
         </h1>
         <p className="mt-1 text-sm text-[#706A61]">
-          Tổng quan số liệu và tình trạng sản phẩm gốm sứ mới tại Komorebi.
+          Tổng quan số liệu và tình trạng sản phẩm gốm sứ & đồ trang trí tại Kinari.
         </p>
       </header>
 

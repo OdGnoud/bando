@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { PackageCheck, RotateCcw, ShieldCheck, Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Chính Sách Bán Hàng & Đóng Gói | Komorebi Ceramic',
+  title: 'Chính Sách Bán Hàng & Đóng Gói | Kinari Ceramic',
   description:
-    'Chính sách đóng gói chuyên dụng chống sốc, bảo hiểm bể vỡ 100% khi vận chuyển gốm sứ mới tại Komorebi.',
+    'Chính sách đóng gói chuyên dụng chống sốc, bảo hiểm bể vỡ 100% khi vận chuyển gốm sứ và đồ trang trí tại Kinari.',
 };
 
 export default function PolicyPage() {
@@ -14,7 +14,7 @@ export default function PolicyPage() {
         Chính sách bán hàng & vận chuyển
       </h1>
       <p className="mt-3 text-sm text-[#706A61]">
-        Komorebi luôn đặt sự cẩn trọng và trải nghiệm an tâm của khách hàng lên hàng đầu.
+        Kinari luôn đặt sự cẩn trọng và trải nghiệm an tâm của khách hàng lên hàng đầu.
       </p>
 
       <div className="mt-12 space-y-8">
@@ -38,7 +38,7 @@ export default function PolicyPage() {
             </h2>
           </div>
           <p className="mt-2 text-sm leading-relaxed text-[#706A61]">
-            Khi nhận hàng, quý khách được quyền đồng kiểm cùng shipper hoặc quay video mở hộp. Nếu phát hiện bất kỳ vết nứt, mẻ hay bể vỡ do vận chuyển, Komorebi cam kết gửi đổi sản phẩm mới ngay lập tức hoặc hoàn tiền 100% không phát sinh chi phí.
+            Khi nhận hàng, quý khách được quyền đồng kiểm cùng shipper hoặc quay video mở hộp. Nếu phát hiện bất kỳ vết nứt, mẻ hay bể vỡ do vận chuyển, Kinari cam kết gửi đổi sản phẩm mới ngay lập tức hoặc hoàn tiền 100% không phát sinh chi phí.
           </p>
         </div>
 

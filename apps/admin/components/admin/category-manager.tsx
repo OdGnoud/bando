@@ -78,7 +78,7 @@ export function CategoryManager({ initial }: { initial: Category[] }) {
             id="cat-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Bàn phím, Tai nghe, Laptop..."
+            placeholder="Tách trà, Đồ trang trí, Đồ cũ tuyển chọn..."
             maxLength={80}
           />
         </div>
