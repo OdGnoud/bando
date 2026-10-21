@@ -9,7 +9,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: { unoptimized: true },
-  transpilePackages: ['@gdl/ui', '@gdl/shared'],
 };
 
 module.exports = nextConfig;
