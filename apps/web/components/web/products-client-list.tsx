@@ -12,7 +12,6 @@ interface Props {
 }
 
 type ConditionFilter = 'all' | 'new' | 'used';
-type PriceFilter = 'all' | 'under2k' | '2kto3k' | 'over3k';
 type SortOption = 'newest' | 'priceAsc' | 'priceDesc';
 
 export function ProductsClientList({ initialProducts, categories }: Props) {
@@ -29,7 +28,6 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
   const [selectedCondition, setSelectedCondition] = useState<ConditionFilter>(
     initialIsUsed ? 'used' : urlCondition === 'new' ? 'new' : 'all'
   );
-  const [selectedPrice, setSelectedPrice] = useState<PriceFilter>('all');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -45,7 +43,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
     else if (urlCondition === 'new') setSelectedCondition('new');
   }, [urlCat, urlCondition]);
 
-  // Exclude 'do-cu' from product category pills since it is handled by the condition tabs above
+  // Exclude 'do-cu' and secondhand from product category pills since condition is handled above
   const productCategories = useMemo(() => {
     return categories.filter((c) => {
       const slug = (c.slug || '').toLowerCase();
@@ -53,9 +51,12 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
       const id = (c.id || '').toLowerCase();
       return (
         slug !== 'do-cu' &&
+        slug !== 'do-cu-tuyen-chon' &&
         id !== 'cat_secondhand' &&
         !name.includes('đồ cũ') &&
+        !name.includes('cũ') &&
         !name.includes('secondhand') &&
+        !name.includes('vintage') &&
         !slug.includes('do-cu')
       );
     });
@@ -91,12 +92,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
         if (selectedCondition === 'new' && isUsed) return false;
         if (selectedCondition === 'used' && !isUsed) return false;
 
-        // 3. Price Filter
-        if (selectedPrice === 'under2k' && p.price >= 2000) return false;
-        if (selectedPrice === '2kto3k' && (p.price < 2000 || p.price > 3000)) return false;
-        if (selectedPrice === 'over3k' && p.price <= 3000) return false;
-
-        // 4. Search Filter
+        // 3. Search Filter
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase().trim();
           const matchName = p.name.toLowerCase().includes(q);
@@ -114,19 +110,17 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
         // Default newest
         return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
       });
-  }, [initialProducts, selectedCat, selectedCondition, selectedPrice, searchQuery, sortBy]);
+  }, [initialProducts, selectedCat, selectedCondition, searchQuery, sortBy]);
 
   const hasActiveFilters =
     Boolean(selectedCat) ||
     selectedCondition !== 'all' ||
-    selectedPrice !== 'all' ||
     Boolean(searchQuery.trim()) ||
     sortBy !== 'newest';
 
   function resetFilters() {
     setSelectedCat(null);
     setSelectedCondition('all');
-    setSelectedPrice('all');
     setSortBy('newest');
     setSearchQuery('');
   }
@@ -278,50 +272,38 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
           </div>
         </div>
 
-        {/* Bottom: Price Range & Sort Bar */}
+        {/* Bottom: Results Count & Sort Droplist */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#EFE8DC] pt-4 text-xs">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[#706A61]">
-            <span className="font-medium text-[#4A3728]">Mức giá:</span>
-            {[
-              { id: 'all', label: 'Tất cả' },
-              { id: 'under2k', label: '< 2.000 ¥' },
-              { id: '2kto3k', label: '2.000 ¥ – 3.000 ¥' },
-              { id: 'over3k', label: '> 3.000 ¥' },
-            ].map((p) => (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => setSelectedPrice(p.id as PriceFilter)}
-                className={`rounded-full px-3 py-1 transition-all ${
-                  selectedPrice === p.id
-                    ? 'bg-[#4A3728] font-semibold text-white shadow-xs'
-                    : 'bg-white border border-[#DDD3C4] hover:text-[#4A3728]'
-                }`}
-              >
-                {p.label}
-              </button>
-            ))}
+          <div className="flex items-center gap-2 text-xs text-[#706A61]">
+            <span>
+              Hiển thị <strong className="text-[#2B2927] font-semibold">{filteredProducts.length}</strong> tác phẩm phù hợp
+            </span>
+            {activeCategory && (
+              <span className="rounded-full bg-[#EFE8DC] px-2.5 py-0.5 text-[11px] font-medium text-[#4A3728]">
+                {activeCategory.name}
+              </span>
+            )}
           </div>
 
           {/* Sort dropdown */}
           <div className="flex items-center gap-2">
             <ArrowUpDown className="h-3.5 w-3.5 text-[#8C5E45]" />
-            <span className="text-[#706A61]">Sắp xếp:</span>
+            <span className="font-medium text-[#4A3728]">Sắp xếp:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="rounded-lg border border-[#DDD3C4] bg-white px-2.5 py-1 text-xs text-[#2B2927] focus:border-[#8C5E45] focus:outline-hidden"
+              className="rounded-full border border-[#DDD3C4] bg-white px-3.5 py-1.5 text-xs font-medium text-[#2B2927] shadow-2xs hover:border-[#8C5E45] focus:border-[#8C5E45] focus:outline-hidden cursor-pointer"
             >
               <option value="newest">Mới nhất</option>
-              <option value="priceAsc">Giá thấp đến cao</option>
-              <option value="priceDesc">Giá cao đến thấp</option>
+              <option value="priceAsc">Giá tăng dần (Thấp → Cao)</option>
+              <option value="priceDesc">Giá giảm dần (Cao → Thấp)</option>
             </select>
 
             {hasActiveFilters && (
               <button
                 type="button"
                 onClick={resetFilters}
-                className="ml-2 inline-flex items-center gap-1 rounded-md border border-[#DDBEA9] bg-[#FAF7F2] px-2.5 py-1 text-[11px] font-medium text-[#8C5E45] hover:bg-[#EFE8DC]"
+                className="ml-2 inline-flex items-center gap-1 rounded-full border border-[#DDBEA9] bg-[#FAF7F2] px-3 py-1.5 text-[11px] font-medium text-[#8C5E45] hover:bg-[#EFE8DC] transition-colors"
               >
                 <RotateCcw className="h-3 w-3" />
                 Đặt lại
@@ -329,18 +311,6 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
             )}
           </div>
         </div>
-      </div>
-
-      {/* Results Header Info */}
-      <div className="mb-6 flex items-center justify-between text-xs text-[#706A61]">
-        <span>
-          Hiển thị <strong className="text-[#2B2927] font-semibold">{filteredProducts.length}</strong> tác phẩm phù hợp
-        </span>
-        {activeCategory && (
-          <span className="rounded-full bg-[#EFE8DC] px-2.5 py-0.5 text-[11px] font-medium text-[#4A3728]">
-            Đang xem: {activeCategory.name}
-          </span>
-        )}
       </div>
 
       {/* Product Grid or Empty State */}
