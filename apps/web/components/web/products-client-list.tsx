@@ -6,6 +6,8 @@ import { ProductCard } from '@/components/web/product-card';
 import type { Category, ProductWithRelations } from '@/lib/types';
 import { Search, SlidersHorizontal, RotateCcw, Sparkles, Tag, ArrowUpDown } from 'lucide-react';
 
+import { DEFAULT_CATEGORIES } from '@/lib/demo-products';
+
 interface Props {
   initialProducts: ProductWithRelations[];
   categories: Category[];
@@ -43,9 +45,23 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
     else if (urlCondition === 'new') setSelectedCondition('new');
   }, [urlCat, urlCondition]);
 
-  // Exclude 'do-cu' and secondhand from product category pills since condition is handled above
+  // Exclude 'do-cu' from product category pills since condition is handled above
   const productCategories = useMemo(() => {
-    return categories.filter((c) => {
+    let list: Category[] = categories && categories.length > 0 ? [...categories] : [];
+    if (list.length === 0 && initialProducts && initialProducts.length > 0) {
+      const seen = new Set<string>();
+      for (const p of initialProducts) {
+        if (p.category && p.category.slug && !seen.has(p.category.slug)) {
+          seen.add(p.category.slug);
+          list.push(p.category);
+        }
+      }
+    }
+    if (list.length === 0) {
+      list = [...DEFAULT_CATEGORIES];
+    }
+
+    return list.filter((c) => {
       const slug = (c.slug || '').toLowerCase();
       const name = (c.name || '').toLowerCase();
       const id = (c.id || '').toLowerCase();
@@ -54,18 +70,18 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
         slug !== 'do-cu-tuyen-chon' &&
         id !== 'cat_secondhand' &&
         !name.includes('đồ cũ') &&
-        !name.includes('cũ') &&
-        !name.includes('secondhand') &&
-        !name.includes('vintage') &&
         !slug.includes('do-cu')
       );
     });
-  }, [categories]);
+  }, [categories, initialProducts]);
 
   const activeCategory = useMemo(() => {
     if (!selectedCat) return null;
-    return categories.find((c) => c.slug === selectedCat || c.id === selectedCat);
-  }, [categories, selectedCat]);
+    return (
+      productCategories.find((c) => c.slug === selectedCat || c.id === selectedCat) ||
+      categories.find((c) => c.slug === selectedCat || c.id === selectedCat)
+    );
+  }, [productCategories, categories, selectedCat]);
 
   // Main filter & sort logic
   const filteredProducts = useMemo(() => {

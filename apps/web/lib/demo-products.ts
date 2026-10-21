@@ -1,4 +1,13 @@
-import type { ProductWithRelations } from './types';
+import type { Category, ProductWithRelations } from './types';
+
+export const DEFAULT_CATEGORIES: Category[] = [
+  { id: 'cat_cup', name: 'Tách & Chén Trà', slug: 'coc-tach', sort_order: 1, created_at: '' },
+  { id: 'cat_bowl', name: 'Bát & Tô', slug: 'bat-to', sort_order: 2, created_at: '' },
+  { id: 'cat_plate', name: 'Đĩa & Khay', slug: 'dia-khay', sort_order: 3, created_at: '' },
+  { id: 'cat_vase', name: 'Bình Hoa', slug: 'binh-hoa', sort_order: 4, created_at: '' },
+  { id: 'cat_decor', name: 'Đồ Trang Trí', slug: 'do-trang-tri', sort_order: 5, created_at: '' },
+  { id: 'cat_set', name: 'Set Cặp Đôi & Quà Tặng', slug: 'set-doi', sort_order: 6, created_at: '' },
+];
 
 export const DEMO_CERAMICS: ProductWithRelations[] = [
   {

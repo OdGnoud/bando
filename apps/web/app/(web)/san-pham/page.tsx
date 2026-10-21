@@ -2,22 +2,23 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { getProducts, getCategories } from '@/lib/queries';
 import { ProductsClientList } from '@/components/web/products-client-list';
+import { DEMO_CERAMICS, DEFAULT_CATEGORIES } from '@/lib/demo-products';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Tất Cả Sản Phẩm Gốm & Đồ Trang Trí | Kinari',
   description:
-    'Danh mục gốm sứ nghệ nhân mới 100%, đồ trang trí tinh tế và đồ cũ vintage tuyển chọn từ Nhật Bản.',
+    'Danh mục gốm sứ nghệ nhân mới, đồ trang trí tinh tế và đồ cũ vintage tuyển chọn từ Nhật Bản.',
 };
-import { DEMO_CERAMICS } from '@/lib/demo-products';
 
 export default async function ProductsPage() {
-  const [dbProducts, categories] = await Promise.all([
+  const [dbProducts, dbCategories] = await Promise.all([
     getProducts(),
     getCategories(),
   ]);
 
   const products = dbProducts.length > 0 ? dbProducts : DEMO_CERAMICS;
+  const categories = dbCategories.length > 0 ? dbCategories : DEFAULT_CATEGORIES;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">

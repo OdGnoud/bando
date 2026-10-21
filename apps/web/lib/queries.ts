@@ -1,5 +1,6 @@
 import { d1Query } from '@/lib/d1';
 import type { Category, ProductWithRelations, PromoEvent } from './types';
+import { DEFAULT_CATEGORIES } from './demo-products';
 
 export async function getActivePromoEvents(): Promise<PromoEvent[]> {
   return [];
@@ -8,15 +9,18 @@ export async function getActivePromoEvents(): Promise<PromoEvent[]> {
 export async function getCategories(): Promise<Category[]> {
   try {
     const list = await d1Query('SELECT * FROM categories ORDER BY display_order ASC, name ASC;');
-    return list.map((c: any) => ({
-      id: c.id,
-      name: c.name,
-      slug: c.slug,
-      sort_order: c.display_order || 0,
-      created_at: c.created_at || new Date().toISOString(),
-    }));
+    if (list && list.length > 0) {
+      return list.map((c: any) => ({
+        id: c.id,
+        name: c.name,
+        slug: c.slug,
+        sort_order: c.display_order || 0,
+        created_at: c.created_at || new Date().toISOString(),
+      }));
+    }
+    return DEFAULT_CATEGORIES;
   } catch {
-    return [];
+    return DEFAULT_CATEGORIES;
   }
 }
 
