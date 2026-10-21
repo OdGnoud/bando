@@ -25,6 +25,8 @@ const securityHeaders = [
   },
 ];
 
+const path = require('path');
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -34,6 +36,14 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   transpilePackages: ['@gdl/ui', '@gdl/shared'],
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@gdl/ui': path.resolve(__dirname, '../../packages/ui'),
+      '@gdl/shared': path.resolve(__dirname, '../../packages/shared'),
+    };
+    return config;
+  },
   async headers() {
     return [
       {
