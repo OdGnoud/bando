@@ -261,19 +261,20 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
         </div>
         <div className="space-y-2">
           <Label htmlFor="condition">Tình trạng (Mới / Đồ Cũ)</Label>
-          <Input
-            id="condition"
-            value={conditionLabel}
-            onChange={(e) => setConditionLabel(e.target.value)}
-            placeholder="Hàng mới xuất lò"
-            list="condition-list"
-          />
-          <datalist id="condition-list">
-            <option value="Hàng mới xuất lò" />
-            <option value="Đồ cũ tuyển chọn (90-95%)" />
-            <option value="Like New (98-99%)" />
-            <option value="Cổ / Sưu tầm" />
-          </datalist>
+          <Select
+            value={conditionLabel || 'Hàng mới xuất lò'}
+            onValueChange={(val) => setConditionLabel(val)}
+          >
+            <SelectTrigger id="condition">
+              <SelectValue placeholder="Chọn tình trạng" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Hàng mới xuất lò">✨ Hàng Mới (Xuất lò 100%)</SelectItem>
+              <SelectItem value="Đồ cũ tuyển chọn">🏺 Đồ Cũ (Tuyển chọn Nhật Bản)</SelectItem>
+              <SelectItem value="Like New (98-99%)">💎 Like New (Đồ lướt 98-99%)</SelectItem>
+              <SelectItem value="Cổ / Sưu tầm">📜 Đồ Cổ / Sưu tầm Vintage</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div className="space-y-2">
           <Label htmlFor="price">Giá (Yên - JPY) *</Label>

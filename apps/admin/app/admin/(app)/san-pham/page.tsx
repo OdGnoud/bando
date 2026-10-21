@@ -3,6 +3,8 @@ import { getProducts, getCategories } from '@/lib/queries';
 import { formatPrice, STATUS_LABELS } from '@/lib/types';
 import { ProductRowActions } from '@/components/admin/product-row-actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminProductsPage() {
   const [products, categories] = await Promise.all([
     getProducts({}),

@@ -28,6 +28,7 @@ export function ProductRowActions({ product }: { product: ProductWithRelations }
     }
     toast({ title: 'Đã xoá' });
     router.refresh();
+    window.location.reload();
   }
 
   return (

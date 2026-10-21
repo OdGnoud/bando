@@ -9,7 +9,7 @@ export async function getActivePromoEvents(): Promise<PromoEvent[]> {
 export async function getCategories(): Promise<Category[]> {
   try {
     const list = await d1Query('SELECT * FROM categories ORDER BY display_order ASC, name ASC;');
-    if (list && list.length > 0) {
+    if (Array.isArray(list)) {
       return list.map((c: any) => ({
         id: c.id,
         name: c.name,
@@ -42,13 +42,13 @@ export async function getProducts(opts?: {
       d1Query('SELECT * FROM categories;'),
     ]);
 
-    if (products && products.length > 0) {
-      const catMap = new Map(categories.map((c: any) => [c.id, c]));
+    if (Array.isArray(products)) {
+      const catMap = new Map((categories || []).map((c: any) => [c.id, c]));
 
       return products.map((p: any) => ({
         ...p,
         category: p.category_id ? catMap.get(p.category_id) || null : null,
-        product_images: images
+        product_images: (images || [])
           .filter((img: any) => img.product_id === p.id)
           .map((img: any) => ({
             id: img.id,
