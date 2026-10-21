@@ -1,5 +1,6 @@
 import { d1Query } from './d1';
 import type { Category, ProductWithRelations, PromoEvent } from './types';
+import { DEFAULT_CATEGORIES, DEMO_CERAMICS } from './demo-products';
 
 export async function getActivePromoEvents(): Promise<PromoEvent[]> {
   return [];
@@ -8,15 +9,18 @@ export async function getActivePromoEvents(): Promise<PromoEvent[]> {
 export async function getCategories(): Promise<Category[]> {
   try {
     const list = await d1Query('SELECT * FROM categories ORDER BY display_order ASC, name ASC;');
-    return list.map((c: any) => ({
-      id: c.id,
-      name: c.name,
-      slug: c.slug,
-      sort_order: c.display_order || 0,
-      created_at: c.created_at || new Date().toISOString(),
-    }));
+    if (list && list.length > 0) {
+      return list.map((c: any) => ({
+        id: c.id,
+        name: c.name,
+        slug: c.slug,
+        sort_order: c.display_order || 0,
+        created_at: c.created_at || new Date().toISOString(),
+      }));
+    }
+    return DEFAULT_CATEGORIES;
   } catch {
-    return [];
+    return DEFAULT_CATEGORIES;
   }
 }
 
@@ -38,24 +42,27 @@ export async function getProducts(opts?: {
       d1Query('SELECT * FROM categories;'),
     ]);
 
-    const catMap = new Map(categories.map((c: any) => [c.id, c]));
+    if (products && products.length > 0) {
+      const catMap = new Map(categories.map((c: any) => [c.id, c]));
 
-    return products.map((p: any) => ({
-      ...p,
-      category: p.category_id ? catMap.get(p.category_id) || null : null,
-      product_images: images
-        .filter((img: any) => img.product_id === p.id)
-        .map((img: any) => ({
-          id: img.id,
-          product_id: img.product_id,
-          url: img.url,
-          alt: null,
-          sort_order: img.sort_order || 0,
-          created_at: new Date().toISOString(),
-        })),
-    }));
+      return products.map((p: any) => ({
+        ...p,
+        category: p.category_id ? catMap.get(p.category_id) || null : null,
+        product_images: images
+          .filter((img: any) => img.product_id === p.id)
+          .map((img: any) => ({
+            id: img.id,
+            product_id: img.product_id,
+            url: img.url,
+            alt: null,
+            sort_order: img.sort_order || 0,
+            created_at: new Date().toISOString(),
+          })),
+      }));
+    }
+    return DEMO_CERAMICS;
   } catch {
-    return [];
+    return DEMO_CERAMICS;
   }
 }
 

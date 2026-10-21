@@ -3,21 +3,23 @@ import { getAdminSession } from '@/lib/auth';
 import { d1Query } from '@/lib/d1';
 import { slugify } from '@/lib/types';
 import { randomUUID } from 'crypto';
+import { DEMO_CERAMICS } from '@/lib/demo-products';
 
 export async function GET() {
   try {
     const products = await d1Query('SELECT * FROM products ORDER BY created_at DESC;');
     const images = await d1Query('SELECT * FROM product_images ORDER BY sort_order ASC;');
 
-    // Ghép ảnh vào sản phẩm
-    const productsWithImages = products.map((p) => ({
-      ...p,
-      product_images: images.filter((img) => img.product_id === p.id),
-    }));
-
-    return NextResponse.json(productsWithImages);
+    if (products && products.length > 0) {
+      const productsWithImages = products.map((p) => ({
+        ...p,
+        product_images: images.filter((img) => img.product_id === p.id),
+      }));
+      return NextResponse.json(productsWithImages);
+    }
+    return NextResponse.json(DEMO_CERAMICS);
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json(DEMO_CERAMICS);
   }
 }
 
