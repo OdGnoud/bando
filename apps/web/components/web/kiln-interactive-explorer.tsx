@@ -65,7 +65,7 @@ const CRAFT_STYLES: CraftStyle[] = [
     feature: 'Đồ xưa tuyển chọn, mỗi món là duy nhất.',
     feel: 'Mộc mạc, hoài niệm, giá trị sưu tầm cao.',
     image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1000&q=85',
-    recommendedCategory: '/san-pham?cat=do-cu',
+    recommendedCategory: '/san-pham?condition=used',
   },
 ];
 

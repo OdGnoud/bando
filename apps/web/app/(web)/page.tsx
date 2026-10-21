@@ -19,7 +19,7 @@ const DEMO_NEW_CERAMICS = [
     full_description: 'San pham moi 100% xuat xuong tu lo thu cong. Than gom dan trien chung nhan nghe nhan.',
     defects_notes: null,
     accessories: 'Hop giay moc Nhat Ban + Dia lot go tuyet tung',
-    location: 'Hang san kho / Giao hang toan quoc',
+    location: 'Tại Nhật Bản (Giao hàng toàn quốc)',
     is_featured: true,
     is_new_arrival: true,
     facebook_post_id: null,
@@ -52,7 +52,7 @@ const DEMO_NEW_CERAMICS = [
     full_description: 'San pham moi tinh nguyen hop. Tao hinh nap vom doc dao voi num cam luon song nghe thuat.',
     defects_notes: null,
     accessories: 'Kem nap gom dong bo + Hop chinh hang',
-    location: 'Hang san kho / Giao hang toan quoc',
+    location: 'Tại Nhật Bản (Giao hàng toàn quốc)',
     is_featured: true,
     is_new_arrival: true,
     facebook_post_id: null,
@@ -133,10 +133,16 @@ export default async function HomePage() {
     { id: '3', name: 'Đĩa & Khay Gốm', slug: 'dia-khay' },
     { id: '4', name: 'Bình Hoa Ikebana', slug: 'binh-hoa' },
     { id: '5', name: 'Đồ Trang Trí', slug: 'do-trang-tri' },
-    { id: '6', name: 'Đồ Cũ Tuyển Chọn', slug: 'do-cu' },
   ];
 
-  const categoriesToShow = dbCategories.length > 0 ? dbCategories : defaultCategoryList;
+  const allCats = dbCategories.length > 0 ? dbCategories : defaultCategoryList;
+  const categoriesToShow = allCats.filter(
+    (c) =>
+      c.slug !== 'do-cu' &&
+      c.id !== 'cat_secondhand' &&
+      !c.name.toLowerCase().includes('đồ cũ') &&
+      !c.slug.includes('do-cu')
+  );
 
   return (
     <div className="washi-pattern">
@@ -182,9 +188,9 @@ export default async function HomePage() {
                 <div>
                   <div className="font-serif font-semibold text-[#2B2927] text-sm flex items-center gap-1.5">
                     <PackageCheck className="h-4 w-4 text-[#9C6644]" />
-                    Mới 100%
+                    Tuyển Chọn
                   </div>
-                  <p className="text-[11px] text-[#8C5E45] mt-1">Nguyên hộp lò gốm</p>
+                  <p className="text-[11px] text-[#8C5E45] mt-1">Đồ mới & vintage Nhật</p>
                 </div>
                 <div>
                   <div className="font-serif font-semibold text-[#2B2927] text-sm flex items-center gap-1.5">
@@ -215,7 +221,7 @@ export default async function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <span className="rounded bg-white/20 backdrop-blur-md px-3 py-1 text-[10px] tracking-widest uppercase font-mono">
-                    100% NEW CERAMIC
+                    JAPANESE CERAMIC & VINTAGE
                   </span>
                   <h3 className="mt-2 font-serif text-2xl font-normal leading-tight">
                     Tinh hoa nghệ thuật gốm Nhật
@@ -224,8 +230,8 @@ export default async function HomePage() {
               </div>
 
               <div className="animate-float absolute -bottom-5 -left-5 flex h-24 w-24 flex-col items-center justify-center rounded-2xl border border-[#DDD3C4] bg-[#FAF7F2] text-[#4A3728] shadow-2xl">
-                <span className="font-serif text-3xl font-bold">新品</span>
-                <span className="text-[10px] tracking-widest uppercase text-[#BC4749] font-bold mt-0.5">MỚI 100%</span>
+                <span className="font-serif text-3xl font-bold">厳選</span>
+                <span className="text-[10px] tracking-widest uppercase text-[#9C6644] font-bold mt-0.5">TUYỂN CHỌN</span>
               </div>
             </div>
           </div>
@@ -261,10 +267,10 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal direction="up" className="mb-10 text-center">
             <span className="text-xs font-semibold tracking-widest uppercase text-[#9C6644]">
-              DANH MỤC SẢN PHẨM MỚI
+              DANH MỤC TUYỂN CHỌN
             </span>
             <h2 className="mt-1 font-serif text-3xl font-normal text-[#262422]">
-              Gốm Sứ Chế Tác Mới Chính Hãng
+              Gốm Sứ Thủ Công & Đồ Trang Trí Nhật Bản
             </h2>
             <div className="mx-auto mt-2 h-[2px] w-12 bg-[#B07D62]" />
           </ScrollReveal>
@@ -414,10 +420,10 @@ export default async function HomePage() {
           <ScrollReveal direction="up" className="flex flex-col items-center justify-between gap-4 md:flex-row mb-12">
             <div>
               <span className="text-xs font-semibold tracking-widest uppercase text-[#9C6644]">
-                HÀNG MỚI VỀ NGUYÊN HỘP
+                BỘ SƯU TẬP NỔI BẬT
               </span>
               <h2 className="mt-1 font-serif text-3xl font-normal text-[#262422]">
-                Tác Phẩm Gốm Mới Nổi Bật
+                Tác Phẩm Gốm & Đồ Trang Trí Tuyển Chọn
               </h2>
             </div>
 
@@ -456,9 +462,9 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                kanji: '新',
-                title: '100% Đồ Mới Xuất Lò',
-                desc: 'Toàn bộ gốm sứ đều mới tinh nguyên hộp xuất xưởng, đảm bảo vệ sinh tuyệt đối.',
+                kanji: '選',
+                title: 'Tuyển Chọn Tỉ Mỉ',
+                desc: 'Từ tác phẩm mới xuất lò đến đồ cũ vintage đượm màu thời gian, từng món đều được tuyển lựa khắt khe.',
               },
               {
                 kanji: '無',
@@ -495,7 +501,7 @@ export default async function HomePage() {
         <ScrollReveal direction="up" className="mx-auto max-w-5xl px-4 text-center sm:px-6">
           <span className="font-serif text-3xl text-[#8C5E45]">“</span>
           <blockquote className="mx-auto max-w-2xl font-serif text-xl sm:text-2xl leading-relaxed text-[#2B2927]">
-            Từng tác phẩm gốm mới 100% nguyên hộp, mang hơi thở tinh hoa của bàn tay nghệ nhân Nhật Bản đến từng không gian sống và bàn ăn của bạn.
+            Từng tác phẩm gốm sứ thủ công và đồ cũ vintage tuyển chọn, mang hơi thở tinh hoa cùng vẻ đẹp mộc mạc Nhật Bản đến từng không gian sống và bàn ăn của bạn.
           </blockquote>
           <p className="mt-4 text-xs tracking-widest uppercase text-[#857B72]">
             — Kinari Ceramic | Gốm Sứ & Đồ Trang Trí Nhật Bản —

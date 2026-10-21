@@ -24,7 +24,7 @@ export default async function AdminProductsPage() {
             </span>
           </div>
           <p className="mt-1 text-sm text-[#706A61]">
-            Toàn bộ sản phẩm đều là gốm mới 100% nguyên hộp từ các lò gốm Nhật.
+            Danh sách tác phẩm gốm sứ mới, đồ trang trí và đồ cũ vintage tuyển chọn từ Nhật Bản.
           </p>
         </div>
         <Link

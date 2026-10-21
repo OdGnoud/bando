@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         body.short_description || null,
         body.full_description || null,
         body.accessories || null,
-        body.location || 'Kho Hà Nội',
+        body.location || 'Tại Nhật Bản',
         body.is_featured ? 1 : 0,
         body.is_new_arrival ? 1 : 0,
       ]
@@ -112,7 +112,7 @@ export async function PATCH(request: NextRequest) {
         body.short_description || null,
         body.full_description || null,
         body.accessories || null,
-        body.location || 'Kho Hà Nội',
+        body.location || 'Tại Nhật Bản',
         body.is_featured ? 1 : 0,
         body.is_new_arrival ? 1 : 0,
         id,

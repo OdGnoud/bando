@@ -22,9 +22,12 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
   const urlCat = searchParams.get('cat');
   const urlCondition = searchParams.get('condition');
 
-  const [selectedCat, setSelectedCat] = useState<string | null>(urlCat);
+  const initialIsUsed = urlCondition === 'used' || urlCat === 'do-cu';
+  const [selectedCat, setSelectedCat] = useState<string | null>(
+    urlCat === 'do-cu' ? null : urlCat
+  );
   const [selectedCondition, setSelectedCondition] = useState<ConditionFilter>(
-    urlCondition === 'used' ? 'used' : urlCondition === 'new' ? 'new' : 'all'
+    initialIsUsed ? 'used' : urlCondition === 'new' ? 'new' : 'all'
   );
   const [selectedPrice, setSelectedPrice] = useState<PriceFilter>('all');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
@@ -32,10 +35,31 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
 
   // Sync state if URL changes
   useEffect(() => {
-    if (urlCat !== undefined) setSelectedCat(urlCat);
+    if (urlCat === 'do-cu') {
+      setSelectedCondition('used');
+      setSelectedCat(null);
+    } else if (urlCat !== undefined) {
+      setSelectedCat(urlCat);
+    }
     if (urlCondition === 'used') setSelectedCondition('used');
     else if (urlCondition === 'new') setSelectedCondition('new');
   }, [urlCat, urlCondition]);
+
+  // Exclude 'do-cu' from product category pills since it is handled by the condition tabs above
+  const productCategories = useMemo(() => {
+    return categories.filter((c) => {
+      const slug = (c.slug || '').toLowerCase();
+      const name = (c.name || '').toLowerCase();
+      const id = (c.id || '').toLowerCase();
+      return (
+        slug !== 'do-cu' &&
+        id !== 'cat_secondhand' &&
+        !name.includes('đồ cũ') &&
+        !name.includes('secondhand') &&
+        !slug.includes('do-cu')
+      );
+    });
+  }, [categories]);
 
   const activeCategory = useMemo(() => {
     if (!selectedCat) return null;
@@ -234,7 +258,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
             >
               Tất cả danh mục
             </button>
-            {categories.map((c) => {
+            {productCategories.map((c) => {
               const isSelected = selectedCat === c.slug || selectedCat === c.id;
               return (
                 <button
@@ -268,9 +292,9 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
                 key={p.id}
                 type="button"
                 onClick={() => setSelectedPrice(p.id as PriceFilter)}
-                className={`rounded-md px-2.5 py-1 transition-colors ${
+                className={`rounded-full px-3 py-1 transition-all ${
                   selectedPrice === p.id
-                    ? 'bg-[#4A3728] font-semibold text-white'
+                    ? 'bg-[#4A3728] font-semibold text-white shadow-xs'
                     : 'bg-white border border-[#DDD3C4] hover:text-[#4A3728]'
                 }`}
               >
@@ -313,7 +337,7 @@ export function ProductsClientList({ initialProducts, categories }: Props) {
           Hiển thị <strong className="text-[#2B2927] font-semibold">{filteredProducts.length}</strong> tác phẩm phù hợp
         </span>
         {activeCategory && (
-          <span className="rounded-full bg-[#EFE8DC] px-2.5 py-0.5 text-[11px] text-[#4A3728]">
+          <span className="rounded-full bg-[#EFE8DC] px-2.5 py-0.5 text-[11px] font-medium text-[#4A3728]">
             Đang xem: {activeCategory.name}
           </span>
         )}

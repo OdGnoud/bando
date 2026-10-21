@@ -37,7 +37,7 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/san-pham?cat=do-cu" className="hover:text-[#9C6644] transition-colors font-medium text-[#8C5E45]">
+                <Link href="/san-pham?condition=used" className="hover:text-[#9C6644] transition-colors font-medium text-[#8C5E45]">
                   ✦ Đồ Cũ Tuyển Chọn (Secondhand)
                 </Link>
               </li>

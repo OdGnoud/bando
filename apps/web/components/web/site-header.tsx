@@ -10,7 +10,7 @@ const navLinks = [
   { href: '/', label: 'Bộ Sưu Tập' },
   { href: '/san-pham', label: 'Tất Cả Sản Phẩm' },
   { href: '/san-pham?cat=do-trang-tri', label: 'Đồ Trang Trí' },
-  { href: '/san-pham?cat=do-cu', label: 'Đồ Cũ Tuyển Chọn' },
+  { href: '/san-pham?condition=used', label: 'Đồ Cũ Tuyển Chọn' },
   { href: '/ve-chung-toi', label: 'Về Kinari' },
   { href: '/lien-he', label: 'Liên Hệ' },
 ];
@@ -19,17 +19,22 @@ export function SiteHeader() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentCat = searchParams.get('cat');
+  const currentCond = searchParams.get('condition');
   const [mobileOpen, setMobileOpen] = useState(false);
 
   function isLinkActive(href: string) {
     if (href === '/') {
-      return pathname === '/' && !currentCat;
+      return pathname === '/' && !currentCat && !currentCond;
     }
     if (href.startsWith('/san-pham?cat=')) {
       const targetCat = href.split('cat=')[1];
       return pathname.startsWith('/san-pham') && currentCat === targetCat;
     }
-    return pathname.startsWith(href);
+    if (href.startsWith('/san-pham?condition=')) {
+      const targetCond = href.split('condition=')[1];
+      return pathname.startsWith('/san-pham') && currentCond === targetCond;
+    }
+    return pathname === href;
   }
 
   return (

@@ -46,11 +46,11 @@ export default function PolicyPage() {
           <div className="flex items-center gap-3">
             <PackageCheck className="h-5 w-5 text-[#9C6644]" />
             <h2 className="font-serif text-lg font-semibold text-[#262422]">
-              Cam kết chất lượng 100% Hàng Mới
+              Cam kết chất lượng chuẩn Nhật Bản
             </h2>
           </div>
           <p className="mt-2 text-sm leading-relaxed text-[#706A61]">
-            100% sản phẩm là gốm nghệ nhân mới nguyên chiếc từ Nhật Bản, nung ở nhiệt độ cao an toàn dùng cho lò vi sóng và máy rửa chén (đối với dòng men bóng). Các dòng men hỏa biến thủ công hoặc có mạ vàng/bạc khuyến khích rửa tay nhẹ nhàng bằng khăn mềm.
+            Sản phẩm gốm sứ và đồ trang trí được tuyển chọn kỹ lưỡng trực tiếp từ Nhật Bản, nung ở nhiệt độ cao an toàn dùng cho đời sống hàng ngày. Đối với các tác phẩm đồ cũ vintage tuyển chọn, Kinari luôn kiểm tra tình trạng lành lặn và mô tả minh bạch từng chi tiết trước khi gửi tới quý khách.
           </p>
         </div>
       </div>
