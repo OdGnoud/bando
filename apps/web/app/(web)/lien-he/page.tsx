@@ -76,7 +76,7 @@ export default function ContactPage() {
           </div>
           <div className="flex items-center gap-3 text-sm text-[#706A61]">
             <MapPin className="h-5 w-5 text-[#9C6644]" />
-            <span>Hàng sẵn tại Nhật Bản (Vận chuyển toàn quốc)</span>
+            <span>Hàng có sẵn tại Nhật Bản</span>
           </div>
         </div>
       </div>
