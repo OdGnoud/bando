@@ -30,7 +30,7 @@ export default async function EditProductPage({ params }: Props) {
       <h1 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900">
         Sửa: {product.name}
       </h1>
-      <div className="max-w-2xl rounded-lg border border-zinc-200 bg-white p-6">
+      <div className="max-w-5xl rounded-lg border border-zinc-200 bg-white p-6 shadow-xs">
         <EditProductClient product={product} categories={categories} />
       </div>
     </div>

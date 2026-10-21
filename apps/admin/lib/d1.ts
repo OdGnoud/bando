@@ -3,6 +3,10 @@ const databaseId = process.env.CLOUDFLARE_D1_DATABASE_ID || '62fcb3ae-5b9b-4608-
 const token = process.env.CLOUDFLARE_D1_TOKEN || '';
 
 export async function d1Query<T = any>(sql: string, params: any[] = []): Promise<T[]> {
+  if (!token) {
+    throw new Error('Chưa cấu hình CLOUDFLARE_D1_TOKEN trên Vercel. Vui lòng thêm token vào Vercel Environment Variables.');
+  }
+
   const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/d1/database/${databaseId}/query`;
 
   const res = await fetch(url, {
@@ -17,7 +21,10 @@ export async function d1Query<T = any>(sql: string, params: any[] = []): Promise
 
   const data = await res.json();
   if (!data.success) {
-    const errorMsg = data.errors?.[0]?.message || 'Lỗi truy vấn Cloudflare D1';
+    let errorMsg = data.errors?.[0]?.message || 'Lỗi truy vấn Cloudflare D1';
+    if (errorMsg === 'Authentication error') {
+      errorMsg = 'Lỗi xác thực Cloudflare D1 (Authentication error). Vui lòng kiểm tra lại CLOUDFLARE_D1_TOKEN trong Vercel Environment Variables.';
+    }
     throw new Error(errorMsg);
   }
 

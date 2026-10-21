@@ -152,6 +152,10 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
       return NextResponse.json({ error: 'Thiếu mã sản phẩm cần xoá' }, { status: 400 });
     }
+
+    if (String(id).startsWith('demo-')) {
+      return NextResponse.json({ success: true, message: 'Đã xoá sản phẩm mẫu' });
+    }
     // Xoá ảnh liên quan trước
     try {
       await d1Query('DELETE FROM product_images WHERE product_id = ?;', [id]);

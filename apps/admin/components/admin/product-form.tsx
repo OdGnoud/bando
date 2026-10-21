@@ -246,9 +246,9 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-2">
-          <Label htmlFor="category">Danh mục</Label>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-end">
+        <div className="space-y-2 flex flex-col justify-end">
+          <Label htmlFor="category" className="min-h-[20px] flex items-center">Danh mục</Label>
           <Select value={categoryId} onValueChange={setCategoryId}>
             <SelectTrigger id="category">
               <SelectValue placeholder="Chọn danh mục" />
@@ -263,8 +263,8 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
             </SelectContent>
           </Select>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="condition">Tình trạng (Mới / Đồ Cũ)</Label>
+        <div className="space-y-2 flex flex-col justify-end">
+          <Label htmlFor="condition" className="min-h-[20px] flex items-center whitespace-nowrap">Tình trạng (Mới / Cũ)</Label>
           <Select
             value={
               conditionLabel && (conditionLabel.toLowerCase().includes('cũ') || conditionLabel.toLowerCase().includes('secondhand') || conditionLabel.toLowerCase().includes('used'))
@@ -282,8 +282,8 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
             </SelectContent>
           </Select>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="price">Giá (Yên - JPY) *</Label>
+        <div className="space-y-2 flex flex-col justify-end">
+          <Label htmlFor="price" className="min-h-[20px] flex items-center">Giá (Yên - JPY) *</Label>
           <Input
             id="price"
             type="number"
@@ -293,8 +293,8 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
             required
           />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="status">Trạng thái gốm</Label>
+        <div className="space-y-2 flex flex-col justify-end">
+          <Label htmlFor="status" className="min-h-[20px] flex items-center">Trạng thái gốm</Label>
           <Select value={status} onValueChange={(v) => setStatus(v as ProductStatus)}>
             <SelectTrigger id="status">
               <SelectValue />

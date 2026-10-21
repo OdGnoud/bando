@@ -17,7 +17,7 @@ export default async function NewProductPage() {
       <h1 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900">
         Thêm sản phẩm
       </h1>
-      <div className="max-w-2xl rounded-lg border border-zinc-200 bg-white p-6">
+      <div className="max-w-5xl rounded-lg border border-zinc-200 bg-white p-6 shadow-xs">
         <NewProductClient categories={categories} />
       </div>
     </div>
