@@ -230,7 +230,7 @@ export default function EventsPage() {
                   <td className="px-4 py-3">
                     <Switch
                       checked={e.is_active}
-                      onCheckedChange={(v) => toggleActive(e, v)}
+                      onCheckedChange={(v: boolean) => toggleActive(e, v)}
                     />
                   </td>
                   <td className="px-4 py-3">

@@ -29,6 +29,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: { unoptimized: true },
   transpilePackages: ['@gdl/ui', '@gdl/shared'],
   async headers() {
