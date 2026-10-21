@@ -47,9 +47,18 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const { id } = await request.json();
+    if (!id) {
+      return NextResponse.json({ error: 'Thiếu mã danh mục' }, { status: 400 });
+    }
+    // Gỡ liên kết danh mục khỏi các sản phẩm trước để tránh lỗi ràng buộc khóa ngoại FOREIGN KEY
+    try {
+      await d1Query('UPDATE products SET category_id = NULL WHERE category_id = ?;', [id]);
+    } catch {}
+    // Xoá danh mục khỏi D1
     await d1Query('DELETE FROM categories WHERE id = ?;', [id]);
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('Lỗi xoá danh mục:', err);
+    return NextResponse.json({ error: err.message || 'Lỗi xoá danh mục' }, { status: 500 });
   }
 }

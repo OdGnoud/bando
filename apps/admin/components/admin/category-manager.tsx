@@ -50,23 +50,29 @@ export function CategoryManager({ initial }: { initial: Category[] }) {
     setName('');
     toast({ title: 'Đã thêm danh mục' });
     router.refresh();
+    window.location.reload();
   }
 
   async function handleDelete(id: string) {
     if (!confirm('Xoá danh mục này? Sản phẩm trong danh mục sẽ không bị xoá.')) return;
-    const res = await fetch('/api/admin/categories', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id }),
-    });
-    if (!res.ok) {
-      const body = await res.json().catch(() => null);
-      toast({ title: 'Lỗi', description: body?.error || 'Không xoá được', variant: 'destructive' });
-      return;
+    try {
+      const res = await fetch('/api/admin/categories', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        alert(body?.error || 'Không xoá được danh mục');
+        return;
+      }
+      setCategories((prev) => prev.filter((c) => c.id !== id));
+      toast({ title: 'Đã xoá' });
+      router.refresh();
+      window.location.reload();
+    } catch (e: any) {
+      alert('Lỗi kết nối khi xoá danh mục: ' + (e?.message || ''));
     }
-    setCategories((prev) => prev.filter((c) => c.id !== id));
-    toast({ title: 'Đã xoá' });
-    router.refresh();
   }
 
   return (

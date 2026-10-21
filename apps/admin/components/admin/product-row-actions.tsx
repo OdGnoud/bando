@@ -15,20 +15,25 @@ export function ProductRowActions({ product }: { product: ProductWithRelations }
   async function handleDelete() {
     if (!confirm(`Xoá "${product.name}"?`)) return;
     setDeleting(true);
-    const res = await fetch('/api/admin/products', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: product.id }),
-    });
-    setDeleting(false);
-    if (!res.ok) {
-      const body = await res.json().catch(() => null);
-      toast({ title: 'Lỗi', description: body?.error || 'Không xoá được', variant: 'destructive' });
-      return;
+    try {
+      const res = await fetch('/api/admin/products', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: product.id }),
+      });
+      setDeleting(false);
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        alert(body?.error || 'Không xoá được sản phẩm');
+        return;
+      }
+      toast({ title: 'Đã xoá' });
+      router.refresh();
+      window.location.reload();
+    } catch (e: any) {
+      setDeleting(false);
+      alert('Lỗi kết nối khi xoá sản phẩm: ' + (e?.message || ''));
     }
-    toast({ title: 'Đã xoá' });
-    router.refresh();
-    window.location.reload();
   }
 
   return (

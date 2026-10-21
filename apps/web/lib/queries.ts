@@ -9,7 +9,7 @@ export async function getActivePromoEvents(): Promise<PromoEvent[]> {
 export async function getCategories(): Promise<Category[]> {
   try {
     const list = await d1Query('SELECT * FROM categories ORDER BY display_order ASC, name ASC;');
-    if (list && list.length > 0) {
+    if (Array.isArray(list)) {
       return list.map((c: any) => ({
         id: c.id,
         name: c.name,

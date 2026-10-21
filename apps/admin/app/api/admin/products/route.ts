@@ -10,10 +10,10 @@ export async function GET() {
     const products = await d1Query('SELECT * FROM products ORDER BY created_at DESC;');
     const images = await d1Query('SELECT * FROM product_images ORDER BY sort_order ASC;');
 
-    if (products && products.length > 0) {
+    if (Array.isArray(products)) {
       const productsWithImages = products.map((p) => ({
         ...p,
-        product_images: images.filter((img) => img.product_id === p.id),
+        product_images: (images || []).filter((img) => img.product_id === p.id),
       }));
       return NextResponse.json(productsWithImages);
     }
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
         slug,
         body.category_id || null,
         body.price || 0,
-        body.condition_label || 'Hàng mới xuất lò',
+        body.condition_label || 'Đồ mới',
         body.status || 'available',
         body.short_description || null,
         body.full_description || null,
@@ -109,7 +109,7 @@ export async function PATCH(request: NextRequest) {
         slug,
         body.category_id || null,
         body.price || 0,
-        body.condition_label || 'Hàng mới xuất lò',
+        body.condition_label || 'Đồ mới',
         body.status || 'available',
         body.short_description || null,
         body.full_description || null,
@@ -149,10 +149,18 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const { id } = await request.json();
-    await d1Query('DELETE FROM product_images WHERE product_id = ?;', [id]);
+    if (!id) {
+      return NextResponse.json({ error: 'Thiếu mã sản phẩm cần xoá' }, { status: 400 });
+    }
+    // Xoá ảnh liên quan trước
+    try {
+      await d1Query('DELETE FROM product_images WHERE product_id = ?;', [id]);
+    } catch {}
+    // Xoá sản phẩm
     await d1Query('DELETE FROM products WHERE id = ?;', [id]);
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('Lỗi DELETE product:', err);
+    return NextResponse.json({ error: err.message || 'Lỗi khi xoá sản phẩm' }, { status: 500 });
   }
 }

@@ -9,6 +9,7 @@ export async function POST(req: Request) {
     const token = process.env.CLOUDFLARE_D1_TOKEN || '';
 
     let adminUser = null;
+    const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/d1/database/${databaseId}/query`;
 
     try {
       const res = await fetch(url, {

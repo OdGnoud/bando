@@ -1,7 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Toaster } from '@gdl/ui/components/ui/sonner';
+import { Toaster as RadixToaster } from '@gdl/ui/components/ui/toaster';
+import { Toaster as SonnerToaster } from '@gdl/ui/components/ui/sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,8 @@ export default function RootLayout({
     <html lang="vi">
       <body className={inter.className}>
         {children}
-        <Toaster position="top-right" />
+        <RadixToaster />
+        <SonnerToaster position="top-right" />
       </body>
     </html>
   );

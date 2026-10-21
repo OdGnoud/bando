@@ -79,7 +79,11 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
   const [name, setName] = useState(initial?.name || '');
   const [slug, setSlug] = useState(initial?.slug || '');
   const [categoryId, setCategoryId] = useState<string>(initial?.category_id || 'none');
-  const [conditionLabel, setConditionLabel] = useState<string>(initial?.condition_label || 'Hàng mới xuất lò');
+  const [conditionLabel, setConditionLabel] = useState<string>(
+    initial?.condition_label && (initial.condition_label.toLowerCase().includes('cũ') || initial.condition_label.toLowerCase().includes('secondhand') || initial.condition_label.toLowerCase().includes('used'))
+      ? 'Đồ cũ'
+      : 'Đồ mới'
+  );
   const [price, setPrice] = useState<string>(initial ? String(initial.price) : '');
   const [status, setStatus] = useState<ProductStatus>(initial?.status || 'available');
   const [shortDesc, setShortDesc] = useState(initial?.short_description || '');
@@ -262,17 +266,19 @@ export function ProductForm({ categories, initial, onSubmit, saving }: ProductFo
         <div className="space-y-2">
           <Label htmlFor="condition">Tình trạng (Mới / Đồ Cũ)</Label>
           <Select
-            value={conditionLabel || 'Hàng mới xuất lò'}
+            value={
+              conditionLabel && (conditionLabel.toLowerCase().includes('cũ') || conditionLabel.toLowerCase().includes('secondhand') || conditionLabel.toLowerCase().includes('used'))
+                ? 'Đồ cũ'
+                : 'Đồ mới'
+            }
             onValueChange={(val) => setConditionLabel(val)}
           >
             <SelectTrigger id="condition">
               <SelectValue placeholder="Chọn tình trạng" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Hàng mới xuất lò">✨ Hàng Mới (Xuất lò 100%)</SelectItem>
-              <SelectItem value="Đồ cũ tuyển chọn">🏺 Đồ Cũ (Tuyển chọn Nhật Bản)</SelectItem>
-              <SelectItem value="Like New (98-99%)">💎 Like New (Đồ lướt 98-99%)</SelectItem>
-              <SelectItem value="Cổ / Sưu tầm">📜 Đồ Cổ / Sưu tầm Vintage</SelectItem>
+              <SelectItem value="Đồ mới">Đồ mới</SelectItem>
+              <SelectItem value="Đồ cũ">Đồ cũ</SelectItem>
             </SelectContent>
           </Select>
         </div>
