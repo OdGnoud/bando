@@ -1,1 +1,2 @@
-export * from '@gdl/shared/lib/supabase/anon-server';
+// Unused in apps/web (data querying is handled via Cloudflare D1)
+export {};

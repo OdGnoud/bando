@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
-import { Toaster } from '@gdl/ui/components/ui/sonner';
 
 const serif = Playfair_Display({
   subsets: ['latin', 'vietnamese'],
@@ -34,7 +33,6 @@ export default function RootLayout({
     <html lang="vi" className={`${serif.variable} ${sans.variable}`}>
       <body className="min-h-screen bg-[#FAF7F2] font-sans text-[#2B2927] antialiased selection:bg-[#D4A373]/30 selection:text-[#582F0E]">
         {children}
-        <Toaster position="top-right" />
       </body>
     </html>
   );
