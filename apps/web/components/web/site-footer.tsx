@@ -67,14 +67,14 @@ export function SiteFooter() {
           {/* About & Craft */}
           <div>
             <h4 className="mb-4 font-serif text-base font-semibold tracking-wide text-[#2B2927]">
-              Lò Gốm Truyền Thống
+              Phong Cách Gốm Sứ
             </h4>
             <ul className="space-y-2.5 text-sm text-[#706A61]">
-              <li>Gốm Mino (Mino-yaki, Gifu)</li>
-              <li>Gốm Arita / Imari (Saga)</li>
-              <li>Gốm Kutani vẽ tay sắc sảo</li>
-              <li>Gốm mộc Bizen không men</li>
-              <li>Kỹ thuật men rạn & hỏa biến</li>
+              <li>Men khoáng tự nhiên & men tro</li>
+              <li>Men hỏa biến & vân rạn cổ điển</li>
+              <li>Bát đĩa gia đình & ly tách trà</li>
+              <li>Đồ trang trí & bình hoa Ikebana</li>
+              <li>Đồ gốm xưa vintage tuyển chọn</li>
             </ul>
           </div>
 

@@ -147,7 +147,7 @@ export default async function HomePage() {
             <div className="space-y-6 lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#DDBEA9] bg-[#FAF7F2] px-3.5 py-1 text-xs font-medium tracking-wider text-[#9C6644] shadow-sm">
                 <Award className="h-3.5 w-3.5 text-[#B07D62]" />
-                100% GỐM SỨ NHẬT BẢN MỚI CHÍNH HÃNG (NEW & FULLBOX)
+                GỐM SỨ THỦ CÔNG & ĐỒ TRANG TRÍ NHẬT BẢN
               </div>
 
               <h1 className="font-serif text-4xl font-normal tracking-tight text-[#262422] sm:text-5xl lg:text-6xl leading-[1.15]">
@@ -156,7 +156,7 @@ export default async function HomePage() {
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#706A61] sm:text-lg">
-                Kinari mang đến các tác phẩm gốm sứ nghệ nhân tinh xảo, đồ trang trí phong thủy và các món đồ cũ vintage tuyển chọn từ các vùng lò danh tiếng Nhật Bản (Mino, Arita, Kutani, Kyoto).
+                Kinari mang đến các tác phẩm gốm sứ thủ công mộc mạc, đồ trang trí phong thủy tinh xảo và các món đồ cũ vintage tuyển chọn từ Nhật Bản. Từng món đồ được tuyển lựa kỹ càng, mang tính thẩm mỹ và an toàn cho đời sống hàng ngày của bạn.
               </p>
 
               <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center">
@@ -236,22 +236,22 @@ export default async function HomePage() {
       <div className="overflow-hidden border-b border-[#E8E1D7] bg-[#4A3728] py-3 text-[#FAF7F2]">
         <div className="animate-marquee whitespace-nowrap text-xs font-medium tracking-[0.2em] uppercase">
           <span className="mx-6 flex items-center gap-2">
-            <span className="text-[#D4A373]">✦</span> GỐM MINO-YAKI (GIFU)
-          </span>
-          <span className="mx-6 flex items-center gap-2">
-            <span className="text-[#D4A373]">✦</span> 100% SỨ ARITA NGUYÊN HỘP
-          </span>
-          <span className="mx-6 flex items-center gap-2">
-            <span className="text-[#D4A373]">✦</span> GỐM KUTANI VẼ TAY THỦ CÔNG
-          </span>
-          <span className="mx-6 flex items-center gap-2">
-            <span className="text-[#D4A373]">✦</span> TRIỆN SON NGHỆ NHÂN 手造り
+            <span className="text-[#D4A373]">✦</span> GỐM SỨ THỦ CÔNG NHẬT BẢN
           </span>
           <span className="mx-6 flex items-center gap-2">
             <span className="text-[#D4A373]">✦</span> MEN NUNG TỰ NHIÊN KHÔNG CHÌ
           </span>
           <span className="mx-6 flex items-center gap-2">
-            <span className="text-[#D4A373]">✦</span> GỐM MỘC BIZEN HỎA BIẾN
+            <span className="text-[#D4A373]">✦</span> BÁT ĐĨA & LY TÁCH BÀN TRÀ
+          </span>
+          <span className="mx-6 flex items-center gap-2">
+            <span className="text-[#D4A373]">✦</span> TRIỆN SON NGHỆ NHÂN 手造り
+          </span>
+          <span className="mx-6 flex items-center gap-2">
+            <span className="text-[#D4A373]">✦</span> ĐỒ TRANG TRÍ & PHONG THỦY BÌNH AN
+          </span>
+          <span className="mx-6 flex items-center gap-2">
+            <span className="text-[#D4A373]">✦</span> ĐỒ CŨ TUYỂN CHỌN VINTAGE NHẬT
           </span>
         </div>
       </div>
@@ -316,41 +316,41 @@ export default async function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <ScrollReveal direction="right" className="lg:col-span-5 space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#DDD3C4] bg-[#EFE8DC] px-3 py-1 text-xs font-semibold tracking-widest uppercase text-[#8C5E45]">
-                窯元 · VĂN HÓA LÒ NUNG
+                THỦ CÔNG · NGHỆ THUẬT GỐM SỨ
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#262422]">
-                Tinh hoa từ 4 cái nôi gốm sứ cổ truyền Nhật Bản.
+                Tinh hoa gốm sứ thủ công & đồ trang trí Nhật Bản.
               </h2>
               <p className="text-sm leading-relaxed text-[#706A61] sm:text-base">
-                Không phải sản xuất công nghiệp hàng loạt. Từng sản phẩm tại Kinari đều được nghệ nhân tại các vùng lò lừng danh nhào nặn đất sét tự nhiên, tráng men khoáng thạch và nung ở nhiệt độ cao 1,200°C – 1,350°C.
+                Không phải sản xuất công nghiệp hàng loạt. Từng sản phẩm tại Kinari đều được tạo tác từ đất sét tự nhiên, tráng men khoáng mộc mạc và nung ở nhiệt độ cao 1,200°C – 1,350°C, mang lại độ bền chắc và an toàn cho đời sống hàng ngày.
               </p>
               <div className="space-y-4 pt-2">
                 <div className="flex gap-4">
                   <span className="font-serif text-xl font-bold text-[#9C6644]">01</span>
                   <div>
-                    <h4 className="font-serif font-semibold text-[#2B2927]">Gốm Mino (Mino-yaki, Gifu)</h4>
-                    <p className="text-xs text-[#706A61] mt-0.5">Men Shino trắng sữa và men Oribe xanh ngọc bích.</p>
+                    <h4 className="font-serif font-semibold text-[#2B2927]">Gốm Mộc Men Tro & Hỏa Biến</h4>
+                    <p className="text-xs text-[#706A61] mt-0.5">Chất men tự nhiên mộc mạc, tạo vân sắc độc bản qua lửa nung.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="font-serif text-xl font-bold text-[#9C6644]">02</span>
                   <div>
-                    <h4 className="font-serif font-semibold text-[#2B2927]">Sứ Arita / Imari (Saga)</h4>
-                    <p className="text-xs text-[#706A61] mt-0.5">Cái nôi sứ đầu tiên của Nhật Bản, cốt sứ trong veo.</p>
+                    <h4 className="font-serif font-semibold text-[#2B2927]">Gốm Sứ Bàn Ăn Bền Đẹp</h4>
+                    <p className="text-xs text-[#706A61] mt-0.5">Cốt đất dày dặn, chịu nhiệt tốt, an toàn cho bữa cơm gia đình.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="font-serif text-xl font-bold text-[#9C6644]">03</span>
                   <div>
-                    <h4 className="font-serif font-semibold text-[#2B2927]">Gốm Kutani (Ishikawa)</h4>
-                    <p className="text-xs text-[#706A61] mt-0.5">Nổi tiếng với kỹ thuật vẽ ngũ sắc rực rỡ (Gosai).</p>
+                    <h4 className="font-serif font-semibold text-[#2B2927]">Đồ Trang Trí & Bình Hoa</h4>
+                    <p className="text-xs text-[#706A61] mt-0.5">Tượng may mắn phong thủy và bình hoa tạo điểm nhấn thanh tao.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="font-serif text-xl font-bold text-[#9C6644]">04</span>
                   <div>
-                    <h4 className="font-serif font-semibold text-[#2B2927]">Gốm Bizen (Okayama)</h4>
-                    <p className="text-xs text-[#706A61] mt-0.5">Dòng gốm mộc không dùng men nung bằng củi đỏ.</p>
+                    <h4 className="font-serif font-semibold text-[#2B2927]">Đồ Cũ Tuyển Chọn (Secondhand)</h4>
+                    <p className="text-xs text-[#706A61] mt-0.5">Những món đồ xưa đượm màu thời gian, lành lặn và giàu phong vị hoài cổ.</p>
                   </div>
                 </div>
               </div>
@@ -360,13 +360,13 @@ export default async function HomePage() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-[#DDD3C4] shadow-sm">
                 <Image
                   src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80"
-                  alt="Nghệ nhân gốm Nhật vuốt gốm"
+                  alt="Nghệ nhân vuốt gốm thủ công"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-[10px] tracking-widest uppercase text-white/80">Vuốt gốm thủ công</p>
+                  <p className="text-[10px] tracking-widest uppercase text-white/80">Tạo hình thủ công</p>
                   <p className="font-serif text-sm font-semibold">Từng phôi đất đắp tay</p>
                 </div>
               </div>
@@ -374,27 +374,27 @@ export default async function HomePage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#DDD3C4] shadow-sm">
                   <Image
                     src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80"
-                    alt="Lò nung gốm củi truyền thống"
+                    alt="Lò nung truyền thống"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">
-                    <p className="text-[10px] tracking-widest uppercase text-white/80">Nung hỏa biến 1300°C</p>
-                    <p className="font-serif text-xs font-semibold">Men rạn tự nhiên</p>
+                    <p className="text-[10px] tracking-widest uppercase text-white/80">Nung nhiệt độ cao</p>
+                    <p className="font-serif text-xs font-semibold">Men khoáng tự nhiên</p>
                   </div>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#DDD3C4] shadow-sm">
                   <Image
                     src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80"
-                    alt="Đóng gói nguyên hộp"
+                    alt="Tuyển chọn & Đóng gói"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">
-                    <p className="text-[10px] tracking-widest uppercase text-white/80">Mới 100% Full Box</p>
-                    <p className="font-serif text-xs font-semibold">Triện son & Hộp mộc</p>
+                    <p className="text-[10px] tracking-widest uppercase text-white/80">Tuyển chọn kỹ càng</p>
+                    <p className="font-serif text-xs font-semibold">Đóng gói an toàn chống sốc</p>
                   </div>
                 </div>
               </div>

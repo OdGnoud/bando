@@ -3,74 +3,74 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
-interface KilnDetail {
+interface CraftStyle {
   id: string;
   name: string;
   kanji: string;
-  region: string;
-  history: string;
-  glaze: string;
-  temperature: string;
+  subtitle: string;
+  description: string;
+  material: string;
+  feature: string;
   feel: string;
   image: string;
   recommendedCategory: string;
 }
 
-const KILNS: KilnDetail[] = [
+const CRAFT_STYLES: CraftStyle[] = [
   {
-    id: 'mino',
-    name: 'Gốm Mino (Mino-yaki)',
-    kanji: '美濃焼',
-    region: 'Tỉnh Gifu · Khởi nguồn từ thế kỷ thứ 7',
-    history: 'Dòng gốm quốc dân của Nhật Bản, được các bậc thầy trà đạo như Sen no Rikyu vô cùng trân trọng.',
-    glaze: 'Men Shino (trắng đục vỏ trứng), men Oribe (xanh lục ngọc) và men Kiseto (vàng tro tự nhiên).',
-    temperature: '1,230°C – 1,260°C nung khử',
-    feel: 'Đằm tay, mộc mạc, giữ nhiệt cho đồ uống cực kỳ bền bỉ.',
+    id: 'tea',
+    name: 'Gốm Bàn Trà & Ly Tách',
+    kanji: '茶器',
+    subtitle: 'Nghệ thuật thưởng trà & sống chậm',
+    description: 'Những chiếc tách trà, ly cà phê tráng men mộc mạc, dáng cầm đầm tay mang lại phút giây thưởng thức thư giãn và an yên mỗi ngày.',
+    material: 'Men mộc tự nhiên, men lam hỏa biến và vân rạn cổ điển.',
+    feature: 'Nung nhiệt độ cao 1,250°C, an toàn sức khỏe.',
+    feel: 'Cầm đầm tay, giữ ấm trà lâu, chạm môi êm ái.',
     image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1000&q=85',
     recommendedCategory: '/san-pham?cat=coc-tach',
   },
   {
-    id: 'arita',
-    name: 'Sứ Arita / Imari',
-    kanji: '有田焼',
-    region: 'Tỉnh Saga, Kyushu · Di sản hơn 400 năm',
-    history: 'Cái nôi sứ đầu tiên của xứ Phù Tang. Từng được hoàng gia châu Âu thời kỳ Phục Hưng săn đón.',
-    glaze: 'Cốt sứ cao lanh nguyên chất, men lam Sometsuke và viền vàng kim quý tộc.',
-    temperature: '1,300°C – 1,350°C nhiệt độ siêu cao',
-    feel: 'Mịn màng như ngọc thạch, gõ vang như chuông bạc, chống bám bẩn 100%.',
+    id: 'tableware',
+    name: 'Bát Đĩa Bàn Ăn Gia Đình',
+    kanji: '飯碗',
+    subtitle: 'Ấm cúng từng bữa cơm sum vầy',
+    description: 'Chén cơm, tô canh, đĩa gốm có độ dày dặn và giữ nhiệt tốt. Thiết kế tối giản, thanh lịch làm tôn lên vẻ ngon mắt của từng món ăn.',
+    material: 'Đất sét tự nhiên tráng men khoáng bền bỉ, dễ vệ sinh.',
+    feature: 'Chịu nhiệt tốt, dùng bền đẹp theo thời gian.',
+    feel: 'Cốt đất dày chắc chắn, bề mặt láng mịn sạch sẽ.',
     image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1000&q=85',
     recommendedCategory: '/san-pham?cat=bat-to',
   },
   {
-    id: 'kutani',
-    name: 'Gốm Kutani ngũ sắc',
-    kanji: '九谷焼',
-    region: 'Tỉnh Ishikawa · Nghệ thuật cung đình',
-    history: 'Nổi danh toàn cầu với phong cách vẽ tranh men nổi Gosai (đỏ, vàng, xanh lá, tím, xanh lam).',
-    glaze: 'Men thủy tinh dày dặn vẽ tay tỉ mỉ từng chi tiết chim muông, hoa lá bốn mùa.',
-    temperature: '1,200°C – 1,280°C nung 2 lần',
-    feel: 'Rực rỡ, lộng lẫy và tràn đầy năng lượng nghệ thuật thị giác.',
-    image: 'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=1000&q=85',
-    recommendedCategory: '/san-pham?cat=dia-khay',
+    id: 'decor',
+    name: 'Đồ Trang Trí & Bình Hoa',
+    kanji: '置物',
+    subtitle: 'Điểm nhấn tao nhã cho không gian',
+    description: 'Tượng mèo phong thủy may mắn Maneki-neko và bình cắm hoa Ikebana mang lại sinh khí, vượng tài và nét bình yên cho phòng khách, bàn làm việc.',
+    material: 'Gốm nghệ thuật tạo hình thủ công, họa tiết vẽ tay tỉ mỉ.',
+    feature: 'Phong cách tối giản, hài hòa phong thủy.',
+    feel: 'Sinh động, trang nhã, tạo cảm giác thư thái cho ngôi nhà.',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=85',
+    recommendedCategory: '/san-pham?cat=do-trang-tri',
   },
   {
-    id: 'bizen',
-    name: 'Gốm Bizen Wabi-sabi',
-    kanji: '備前焼',
-    region: 'Tỉnh Okayama · Một trong Lục Đại Cổ Diêu',
-    history: 'Dòng gốm cổ xưa không sử dụng bất kỳ lớp men hóa học nào, hoàn toàn dựa vào tro củi nung tự nhiên.',
-    glaze: 'Tro thông đỏ chảy tự nhiên tạo vân Hidasuki (vệt lửa đỏ) độc nhất vô nhị.',
-    temperature: 'Nung củi liên tục 10 – 14 ngày đêm',
-    feel: 'Thô ráp nguyên sơ, càng chạm tay dùng lâu càng lên nước bóng mịn.',
-    image: 'https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?auto=format&fit=crop&w=1000&q=85',
-    recommendedCategory: '/san-pham?cat=binh-hoa',
+    id: 'secondhand',
+    name: 'Đồ Cũ Tuyển Chọn (Secondhand)',
+    kanji: '古物',
+    subtitle: 'Vẻ đẹp hoài niệm & Wabi-sabi',
+    description: 'Những món gốm xưa đượm màu thời gian được Kinari tuyển lựa kỹ càng tại Nhật, lành lặn không sứt mẻ và mang phong vị hoài cổ độc bản.',
+    material: 'Men rạn ngả sắc ngà tự nhiên, vết thời gian phong sương.',
+    feature: 'Đồ xưa tuyển chọn, mỗi món là duy nhất.',
+    feel: 'Mộc mạc, hoài niệm, giá trị sưu tầm cao.',
+    image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1000&q=85',
+    recommendedCategory: '/san-pham?cat=do-cu',
   },
 ];
 
 export function KilnInteractiveExplorer() {
-  const [selected, setSelected] = useState<KilnDetail>(KILNS[0]);
+  const [selected, setSelected] = useState<CraftStyle>(CRAFT_STYLES[0]);
 
   return (
     <div className="overflow-hidden rounded-3xl border border-[#E8E1D7] bg-[#FAF7F2] p-6 sm:p-10 shadow-lg">
@@ -79,20 +79,20 @@ export function KilnInteractiveExplorer() {
         <div className="lg:col-span-5 space-y-4 w-full">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#EFE8DC] px-3 py-1 text-[11px] font-semibold tracking-wider uppercase text-[#8C5E45]">
             <Sparkles className="h-3 w-3 text-[#B07D62]" />
-            CHẠM ĐỂ KHÁM PHÁ LÒ NGHỆ NHÂN
+            CHẠM ĐỂ KHÁM PHÁ BỘ SƯU TẬP
           </div>
 
           <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#2B2927]">
-            Mỗi vùng đất là một câu chuyện về đất sét & lửa
+            Mỗi tác phẩm là một nét mộc mạc cho ngôi nhà
           </h3>
 
           <div className="space-y-2.5 pt-2">
-            {KILNS.map((kiln) => {
-              const isActive = selected.id === kiln.id;
+            {CRAFT_STYLES.map((style) => {
+              const isActive = selected.id === style.id;
               return (
                 <button
-                  key={kiln.id}
-                  onClick={() => setSelected(kiln)}
+                  key={style.id}
+                  onClick={() => setSelected(style)}
                   className={`w-full text-left rounded-xl p-4 transition-all duration-300 flex items-center justify-between border ${
                     isActive
                       ? 'border-[#9C6644] bg-[#F4EFEB] shadow-sm translate-x-1'
@@ -107,17 +107,17 @@ export function KilnInteractiveExplorer() {
                           : 'bg-[#EFE8DC] text-[#706A61]'
                       }`}
                     >
-                      {kiln.kanji[0]}
+                      {style.kanji[0]}
                     </span>
                     <div>
                       <div className="font-serif text-base font-semibold text-[#2B2927]">
-                        {kiln.name}
+                        {style.name}
                       </div>
-                      <div className="text-xs text-[#8C5E45]">{kiln.region}</div>
+                      <div className="text-xs text-[#8C5E45]">{style.subtitle}</div>
                     </div>
                   </div>
                   <span className="font-serif text-sm font-bold text-[#A68A75]">
-                    {kiln.kanji}
+                    {style.kanji}
                   </span>
                 </button>
               );
@@ -143,11 +143,11 @@ export function KilnInteractiveExplorer() {
             </div>
             <div className="absolute bottom-6 left-6 right-6 text-white space-y-1.5">
               <p className="text-xs tracking-widest uppercase text-white/80 font-mono">
-                {selected.temperature}
+                {selected.feature}
               </p>
               <h4 className="font-serif text-2xl font-bold">{selected.name}</h4>
               <p className="text-xs text-white/90 line-clamp-2 leading-relaxed">
-                {selected.history}
+                {selected.description}
               </p>
             </div>
           </div>
@@ -156,15 +156,15 @@ export function KilnInteractiveExplorer() {
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-xl border border-[#E8E1D7] bg-[#FAF7F2] p-4 space-y-1">
               <span className="text-[10px] uppercase tracking-wider font-semibold text-[#8C5E45]">
-                Đặc trưng chất men
+                Chất liệu & Men gốm
               </span>
               <p className="text-xs leading-relaxed text-[#2B2927]">
-                {selected.glaze}
+                {selected.material}
               </p>
             </div>
             <div className="rounded-xl border border-[#E8E1D7] bg-[#FAF7F2] p-4 space-y-1">
               <span className="text-[10px] uppercase tracking-wider font-semibold text-[#8C5E45]">
-                Cảm giác trên tay
+                Cảm nhận khi sử dụng
               </span>
               <p className="text-xs leading-relaxed text-[#2B2927]">
                 {selected.feel}
@@ -177,7 +177,7 @@ export function KilnInteractiveExplorer() {
               href={selected.recommendedCategory}
               className="inline-flex items-center gap-2 rounded-full bg-[#4A3728] px-6 py-2.5 text-xs font-semibold tracking-wider uppercase text-white shadow-sm transition-all hover:bg-[#32251B] hover:gap-3"
             >
-              Xem các mẫu gốm {selected.name.split(' ')[1]}
+              Xem bộ sưu tập {selected.name}
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>

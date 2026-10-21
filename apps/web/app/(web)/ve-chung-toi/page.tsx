@@ -37,7 +37,7 @@ export default function AboutPage() {
               Gốm Mới Thủ Công Nghệ Nhân (New & Fullbox)
             </h3>
             <p className="mt-1 text-sm leading-relaxed text-[#706A61]">
-              Bộ sưu tập chén bát, ly tách trà, bình hoa mới 100% xuất xưởng từ các lò gốm lừng danh Mino, Arita, Kutani với đầy đủ triện lò và hộp bảo quản mộc mạc.
+              Bộ sưu tập chén bát, ly tách trà, bình hoa mới 100% xuất xưởng từ các làng nghề gốm sứ truyền thống Nhật Bản với đầy đủ triện lò và hộp bảo quản mộc mạc.
             </p>
           </div>
         </div>
