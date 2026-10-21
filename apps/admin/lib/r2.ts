@@ -7,10 +7,12 @@ const secretAccessKey = process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY;
 const bucket = process.env.R2_BUCKET;
 export const r2PublicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
 
-if (!accountId || !endpoint || !accessKeyId || !secretAccessKey || !bucket || !r2PublicBaseUrl) {
-  throw new Error(
-    'Thiếu cấu hình R2: CLOUDFLARE_ACCOUNT_ID / CLOUDFLARE_R2_ENDPOINT / CLOUDFLARE_R2_ACCESS_KEY_ID / CLOUDFLARE_R2_SECRET_ACCESS_KEY / R2_BUCKET / R2_PUBLIC_BASE_URL'
-  );
+export function checkR2Config() {
+  if (!accountId || !endpoint || !accessKeyId || !secretAccessKey || !bucket || !r2PublicBaseUrl) {
+    throw new Error(
+      'Thiếu cấu hình R2: CLOUDFLARE_ACCOUNT_ID / CLOUDFLARE_R2_ENDPOINT / CLOUDFLARE_R2_ACCESS_KEY_ID / CLOUDFLARE_R2_SECRET_ACCESS_KEY / R2_BUCKET / R2_PUBLIC_BASE_URL'
+    );
+  }
 }
 
 const R2_REGION = 'auto';
@@ -48,6 +50,7 @@ async function signedR2Fetch({
   body?: Buffer;
   contentType?: string;
 }): Promise<Response> {
+  checkR2Config();
   const endpointUrl = new URL(endpoint!);
   const canonicalUri = `/${encodeRfc3986(bucket!)}${path ? `/${path.split('/').map(encodeRfc3986).join('/')}` : ''}`;
   const url = `${endpoint}${canonicalUri}`;
